@@ -1,0 +1,27 @@
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+.card label {
+    font-size: 0.8571em;
+    margin-bottom: 5px;
+    color: black;
+}
+.card-user .image {
+    height: auto;
+    max-height: 200px;
+}
+.form-check input[type="checkbox"], .form-check-radio input[type="radio"] {
+  opacity: inherit;
+  position: inherit;
+  visibility: visible;
+}

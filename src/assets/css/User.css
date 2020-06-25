@@ -1,0 +1,20 @@
+.detalhes{
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+  
+  }
+  .detalhes:hover{
+    color: red;
+    font-weight: bold;
+  }
+  .modalObras{
+    list-style: none;
+  }
+  
+  .modal-dialog{
+    max-width: 70%;
+  }
+  .modal-header {
+  background-color: antiquewhite;
+  }
