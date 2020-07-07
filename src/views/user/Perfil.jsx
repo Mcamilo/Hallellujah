@@ -174,7 +174,7 @@ class User extends React.Component {
                           <label>Sobre a Organização</label>
                           <Input
                             type="textarea"
-                            defaultValue="Oh so, your weak rhyme You doubt I'll bother, reading into it"
+                            defaultValue=""
                           />
                         </FormGroup>
                       </Col>
@@ -183,7 +183,7 @@ class User extends React.Component {
                       <div className="update ml-auto mr-auto">
                         <Button
                           className="btn-round"
-                          color="primary"
+                          color="warning"
                           type="submit"
                         >
                           Atualizar Informações

@@ -96,7 +96,7 @@ class Resultados extends React.Component {
          </ModalBody>
          <ModalFooter>
            {/* <Button color='primary' onClick={this.toggle}>Do Something</Button>{' '} */}
-           <Button color='danger' onClick={this.toggle}>Ok</Button>
+           <Button color='warning' onClick={this.toggle}>Ok</Button>
          </ModalFooter>
        </Modal>
           <Row>
@@ -127,7 +127,7 @@ class Resultados extends React.Component {
                       <td>01/01/2021</td>   
                       <td>R$ 10.000,00</td>   
                       <td>Aguardando Avaliação</td>
-                      <td className="detalhes"><Button color='danger' onClick={this.modalContent.bind(this,"Projeto 1 - Aguardando Avaliação")}>Detalhes</Button></td>
+                      <td className="detalhes"><Button color='warning' onClick={this.modalContent.bind(this,"Projeto 1 - Aguardando Avaliação")}>Detalhes</Button></td>
                     </tr>
                     <tr>
                       <td>Projeto 2</td>   
@@ -136,7 +136,7 @@ class Resultados extends React.Component {
                       <td>01/01/2021</td>   
                       <td>R$ 8.000,00</td>   
                       <td>Projeto Aceito</td>
-                      <td className="detalhes"><Button color='danger' onClick={this.modalContent.bind(this,"Projeto 2 - Projeto Aceito")}>Detalhes</Button></td>
+                      <td className="detalhes"><Button color='warning' onClick={this.modalContent.bind(this,"Projeto 2 - Projeto Aceito")}>Detalhes</Button></td>
                     </tr>
                     <tr>
                       <td>Projeto 3</td>   
@@ -145,7 +145,7 @@ class Resultados extends React.Component {
                       <td>01/01/2021</td>   
                       <td>R$ 15.000,00</td>   
                       <td>Projeto Negado</td>
-                      <td className="detalhes"><Button color='danger' onClick={this.modalContent.bind(this,"Projeto 3 - Projeto Negado")}>Detalhes</Button></td>
+                      <td className="detalhes"><Button color='warning' onClick={this.modalContent.bind(this,"Projeto 3 - Projeto Negado")}>Detalhes</Button></td>
                     </tr>     
                   </tbody>
               </Table>

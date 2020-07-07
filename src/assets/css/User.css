@@ -16,5 +16,11 @@
     max-width: 70%;
   }
   .modal-header {
-  background-color: antiquewhite;
+    background-color:#000016;
+    color: white;
+  }
+  .termos{
+    text-decoration: underline;
+    cursor: pointer;
+    color: red;
   }

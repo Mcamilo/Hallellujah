@@ -15,11 +15,10 @@ class Dashboard extends React.Component {
     super(props);
     this.state = {
       backgroundColor: "black",
-      activeColor: "info"
+      activeColor: "warning"
     };
-    console.log(routes)
-    // const menu_routes = routes
-    // menu_routes.splice(-1)
+    
+
     this.mainPanel = React.createRef();
   }
   componentDidMount() {
@@ -65,7 +64,6 @@ class Dashboard extends React.Component {
       <div className="wrapper">
         <Sidebar
           {...this.props}
-
           routes={routes}
           bgColor={this.state.backgroundColor}
           activeColor={this.state.activeColor}
@@ -82,6 +80,7 @@ class Dashboard extends React.Component {
                 />
               );
             })}
+            
           </Switch>
         </div>
       </div>

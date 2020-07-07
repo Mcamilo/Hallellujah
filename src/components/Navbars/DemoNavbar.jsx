@@ -37,14 +37,15 @@ import {
 } from "reactstrap";
 
 import routes from "routes.js";
-
+import "assets/css/Projeto.css"
 class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isOpen: false,
       dropdownOpen: false,
-      color: "transparent"
+      color: "transparent",
+      display:"none"
     };
     this.toggle = this.toggle.bind(this);
     this.dropdownToggle = this.dropdownToggle.bind(this);
@@ -70,7 +71,7 @@ class Header extends React.Component {
     });
   }
   getBrand() {
-    let brandName = "Default Brand";
+    let brandName = "";
     routes.map((prop, key) => {
       if (window.location.href.indexOf(prop.layout + prop.path) !== -1) {
         brandName = prop.name;
@@ -122,7 +123,8 @@ class Header extends React.Component {
           this.props.location.pathname.indexOf("full-screen-maps") !== -1
             ? "navbar-absolute fixed-top"
             : "navbar-absolute fixed-top " +
-              (this.state.color === "transparent" ? "navbar-transparent " : "")
+              (this.state.color === "transparent" ? "navbar-transparent " : "") 
+              // + (this.getBrand() === "" ? "default" : "")
         }
       >
         <Container fluid>
@@ -153,7 +155,7 @@ class Header extends React.Component {
           >
             <form>
               <InputGroup className="no-border">
-                <Input placeholder="Search..." />
+                <Input placeholder="Buscar..." />
                 <InputGroupAddon addonType="append">
                   <InputGroupText>
                     <i className="nc-icon nc-zoom-split" />
@@ -162,14 +164,14 @@ class Header extends React.Component {
               </InputGroup>
             </form>
             <Nav navbar>
-              <NavItem>
+              {/* <NavItem>
                 <Link to="#pablo" className="nav-link btn-magnify">
                   <i className="nc-icon nc-layout-11" />
                   <p>
                     <span className="d-lg-none d-md-block">Stats</span>
                   </p>
                 </Link>
-              </NavItem>
+              </NavItem> */}
               <Dropdown
                 nav
                 isOpen={this.state.dropdownOpen}
@@ -182,19 +184,19 @@ class Header extends React.Component {
                   </p>
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem tag="a">Action</DropdownItem>
-                  <DropdownItem tag="a">Another Action</DropdownItem>
-                  <DropdownItem tag="a">Something else here</DropdownItem>
+                  <DropdownItem tag="a">Notificação 1</DropdownItem>
+                  <DropdownItem tag="a">Notificação 2</DropdownItem>
+                  <DropdownItem tag="a">Notificação 3</DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-              <NavItem>
+              {/* <NavItem>
                 <Link to="#pablo" className="nav-link btn-rotate">
                   <i className="nc-icon nc-settings-gear-65" />
                   <p>
                     <span className="d-lg-none d-md-block">Account</span>
                   </p>
                 </Link>
-              </NavItem>
+              </NavItem> */}
             </Nav>
           </Collapse>
         </Container>

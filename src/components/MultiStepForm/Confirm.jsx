@@ -9,9 +9,17 @@ Form,
 Input,
 Row,
 Col,
-Label } from 'reactstrap';
+Label,Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export class Confirm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false,
+      modalTitle:""
+    };
+    this.toggle = this.toggle.bind(this);
+  }
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -21,6 +29,15 @@ export class Confirm extends Component {
     e.preventDefault();
     this.props.prevStep();
   };
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
+  modalContent(){
+    console.log("CLICOU")
+    this.toggle()
+  }
 render(){
   const {
         values: { titulo,
@@ -35,6 +52,15 @@ render(){
       } = this.props;
   return (
     <>
+    <Modal isOpen={this.state.modal} toggle={this.toggle} className="ModalProjetos">
+         <ModalHeader toggle={this.toggle}>Termos de Serviço</ModalHeader>
+         <ModalBody>
+         <iframe src="http://www.africau.edu/images/default/sample.pdf" style={{height:"600px", width:"100%"}}></iframe>
+         </ModalBody>
+         <ModalFooter>
+           <Button color='warning' onClick={this.toggle}>Ok</Button>
+         </ModalFooter>
+    </Modal>
     <Row style={{paddingTop:"2em"}}>
       <Col md="8" style={{margin:"0 auto"}} >
         <Card className="card-user update ml-auto mr-auto">
@@ -73,8 +99,8 @@ render(){
                 <Row>
                 <FormGroup check>
                   <Label check>
-                    <Input type="checkbox"/>{' '}
-                      Li e Aceito os termos descritos no Estatuto da Instituição
+                    <Input type="checkbox" onClick={this.modalContent.bind(this)}/>{' '}
+                      <span className="termos"> Li e Aceito os Termos descritos no Estatuto da Instituição</span>
                   </Label>
                 </FormGroup>
                 </Row>
@@ -86,7 +112,7 @@ render(){
                   onClick={this.back}
                   >Voltar</Button>
                 <Button
-                  color="primary"
+                  color="warning"
                   variant="contained"
                   onClick={this.continue}
                 >Enviar Cadastro</Button>

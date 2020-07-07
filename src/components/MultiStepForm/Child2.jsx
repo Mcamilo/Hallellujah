@@ -49,7 +49,7 @@ export class Child2 extends Component {
                   <Row>
                     <Col className="pr-1" md="6">
                       <FormGroup>
-                        <label>**Instituição:</label>
+                        <label>Instituição:</label>
                         <Input
                           placeholder="Instituição Parceira"
                           type="text"
@@ -60,7 +60,7 @@ export class Child2 extends Component {
                     </Col>
                     <Col className="pl-1" md="6">
                       <FormGroup>
-                        <label>**Responsável:</label>
+                        <label>Responsável:</label>
                         <Input
                           placeholder="Nome Completo"
                           type="text"
@@ -99,7 +99,7 @@ export class Child2 extends Component {
                   <Row>
                     <Col>
                       <FormGroup>
-                        <label>**Contatos:</label>
+                        <label>Contatos:</label>
                         <Input
                           placeholder="Nome e Telefone"
                           type="text"
@@ -112,7 +112,7 @@ export class Child2 extends Component {
                   <Row>
                     <Col>
                       <FormGroup>
-                        <label>**Voluntarios:</label>
+                        <label>Voluntarios:</label>
                         <Input
                           placeholder="Nome, contato, etc. Descrição do trabalho voluntário"
                           type="textarea"
@@ -141,13 +141,13 @@ export class Child2 extends Component {
                       color="secondary"
                       variant="contained"
                       onClick={this.back}
-                    >Back</Button>
+                    >Anterior</Button>
 
                     <Button
-                      color="primary"
+                      color="warning"
                       variant="contained"
                       onClick={this.continue}
-                    >Continue</Button>
+                    >Próximo</Button>
                     </div>
                   </Row>
               </CardBody>

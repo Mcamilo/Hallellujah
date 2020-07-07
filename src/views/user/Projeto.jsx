@@ -22,7 +22,9 @@ class ProjetoForm extends Component {
     render(){
         return (
             <>
+            <div className="content">
             <ParentForm />
+            </div>
             </>
         );
     }

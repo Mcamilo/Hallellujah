@@ -57,7 +57,7 @@ export class Child1 extends Component {
                     <Row>
                       <Col>
                         <FormGroup>
-                          <label>**Responsável:</label>
+                          <label>Responsável:</label>
                           <Input
                             placeholder="Nome do(a) Responsável:"
                             type="text"
@@ -160,7 +160,7 @@ export class Child1 extends Component {
                     <Row>
                       <div className="update ml-auto mr-auto">
                         <Button
-                          color="primary"
+                          color="warning"
                           variant="contained"
                           onClick={this.continue}
                         >Próximo</Button>

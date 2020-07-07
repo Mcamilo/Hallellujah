@@ -57,6 +57,7 @@ export class Child3 extends Component {
                           type="text"
                           onChange={handleChange('instituicao')}
                           defaultValue={values.instituicao}
+                          disabled
                           />
                       </FormGroup>
                     </Col>
@@ -64,12 +65,13 @@ export class Child3 extends Component {
                     <Row>
                     <Col>
                       <FormGroup>
-                        <label>**Pessoal:</label>
+                        <label>Pessoal:</label>
                         <Input
                           placeholder="Quantidade de pessoas, remuneração, cadastro"
                           type="textarea"
                           onChange={handleChange('parceiro_instituicao_responsavel')}
                           defaultValue={values.parceiro_instituicao_responsavel}
+                          disabled
                         />
                       </FormGroup>
                     </Col>
@@ -83,6 +85,7 @@ export class Child3 extends Component {
                           type="textarea"
                           onChange={handleChange('publico_alvo')}
                           defaultValue={values.publico_alvo}
+                          disabled
                         />
                       </FormGroup>
                     </Col>
@@ -96,6 +99,7 @@ export class Child3 extends Component {
                           type="text"
                           onChange={handleChange('contatos')}
                           defaultValue={values.contatos}
+                          disabled
                         />
                       </FormGroup>
                     </Col>
@@ -109,6 +113,7 @@ export class Child3 extends Component {
                           type="textarea"
                           onChange={handleChange('contatos')}
                           defaultValue={values.contatos}
+                          disabled
                         />
                       </FormGroup>
                     </Col>
@@ -116,12 +121,13 @@ export class Child3 extends Component {
                   <Row>
                     <Col>
                       <FormGroup>
-                        <label>**Outros Custos:</label>
+                        <label>Outros Custos:</label>
                         <Input
                           placeholder="Tipo, quantidade, valor"
                           type="textarea"
                           onChange={handleChange('voluntarios')}
                           defaultValue={values.voluntarios}
+                          disabled
                         />
                       </FormGroup>
                     </Col>
@@ -143,7 +149,7 @@ export class Child3 extends Component {
                     >Anterior</Button>
 
                     <Button
-                      color="primary"
+                      color="warning"
                       variant="contained"
                       onClick={this.continue}
                     >Próximo</Button>

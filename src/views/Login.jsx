@@ -29,7 +29,7 @@ class Login extends React.Component {
           this.setState({ error: "Preencha e-mail e senha para continuar!" });
           } else {
             if(username === "admin" && password === "admin"){
-              this.props.history.push("/admin/avaliar-projeto");
+              this.props.history.push("/admin/projetos");
             }else if(username === "user" && password === "user"){
               this.props.history.push("/user/cadastrar-projeto");
             }
@@ -89,7 +89,7 @@ class Login extends React.Component {
                           <div className="update ml-auto mr-auto">
                             <Button
                               className="btn-round"
-                              color="primary"
+                              color="warning"
                               type="submit"
                             >
                               Enviar

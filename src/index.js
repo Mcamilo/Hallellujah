@@ -9,7 +9,6 @@ import "assets/demo/demo.css";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 import Login from "views/Login.jsx"
-
 import AdminLayout from "layouts/Admin.jsx";
 import UserLayout from "layouts/User.jsx";
 const hist = createBrowserHistory();

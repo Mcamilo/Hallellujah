@@ -6,7 +6,7 @@ import PerfectScrollbar from "perfect-scrollbar";
 import { logout } from "../../services/auth"
 import '../../assets/css/Main.css'
 
-import logo from "../../assets/img/logo-hallelujah.svg";
+import logo from "../../assets/img/logo-branco-c-slogan.png";
 
 var ps;
 
@@ -49,7 +49,7 @@ class Sidebar extends React.Component {
             href="#"
             className="simple-text logo-normal"
           >
-            <div className="logo-img" style={{backgroundColor:"#fff"}}>
+            <div className="logo-img">
               <img src={logo} alt="react-logo" />
             </div>
           </a>
@@ -57,6 +57,8 @@ class Sidebar extends React.Component {
         <div className="sidebar-wrapper" ref={this.sidebar} style={{overflowX:"hidden"}}>
           <Nav>
             {this.props.routes.map((prop, key) => {
+              // Avaliar single project
+              if(prop.visible){
               return (
                 <li
                   className={
@@ -75,6 +77,7 @@ class Sidebar extends React.Component {
                   </NavLink>
                 </li>
               );
+              }
             })}
             <li>
               <NavLink

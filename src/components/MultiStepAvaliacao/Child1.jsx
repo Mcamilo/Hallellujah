@@ -46,10 +46,11 @@ export class Child1 extends Component {
                       <FormGroup>
                         <label>Título do Projeto:</label>
                         <Input
-                          placeholder=""
+                          placeholder="PROJETO 123"
                           type="text"
                           onChange={handleChange('titulo')}
                           defaultValue={values.titulo}
+                          disabled
                         />
                       </FormGroup>
                     </Col>
@@ -57,12 +58,13 @@ export class Child1 extends Component {
                     <Row>
                       <Col>
                         <FormGroup>
-                          <label>**Responsável:</label>
+                          <label>Responsável:</label>
                           <Input
-                            placeholder="Nome do(a) Responsável:"
+                            placeholder="RESPONSÁVEL A"
                             type="text"
                             onChange={handleChange('responsavel')}
                             defaultValue={values.responsavel}
+                            disabled
                           />
                         </FormGroup>
                       </Col>
@@ -72,10 +74,11 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Data Início</label>
                           <Input
-                            placeholder="xx/xx/xxxx"
+                            placeholder="27/07/1994"
                             type="text"
                             onChange={handleChange('inicio')}
                             defaultValue={values.inicio}
+                            disabled
                           />
                         </FormGroup>
                       </Col>
@@ -83,10 +86,11 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Data Término</label>
                           <Input
-                            placeholder="xx/xx/xxxx"
+                            placeholder="10/07/2020"
                             type="text"
                             onChange={handleChange('termino')}
                             defaultValue={values.termino}
+                            disabled
                           />
                         </FormGroup>
                       </Col>
@@ -96,10 +100,11 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Características do Projeto:</label>
                           <Input
-                            placeholder="(Social, Assistencial, Evento, etc.)"
+                            placeholder="SOCIAL"
                             type="text"
                             onChange={handleChange('caracteristicas')}
                             defaultValue={values.caracteristicas}
+                            disabled
                           />
                         </FormGroup>
                       </Col>
@@ -109,10 +114,11 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Objetivo Geral do Projeto:</label>
                           <Input
-                            placeholder=" (Propósito, Linha de Atuação, Justificativa)"
+                            placeholder="OBJETIVO A"
                             type="text"
                             onChange={handleChange('objetivos_gerais')}
                             defaultValue={values.objetivos_gerais}
+                            disabled
                           />
                         </FormGroup>
                       </Col>
@@ -122,10 +128,11 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Objetivo(s) Específico(s) do Projeto:</label>
                           <Input
-                            placeholder=""
+                            placeholder="OBJETIVO ESPECÍFICO ABC"
                             type="text"
                             onChange={handleChange('objetivos_especificos')}
                             defaultValue={values.objetivos_especificos}
+                            disabled
                           />
                         </FormGroup>
                       </Col>
@@ -135,10 +142,11 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Público Alvo:</label>
                           <Input
-                            placeholder=""
+                            placeholder="CRIANÇAS CARENTES"
                             type="text"
                             onChange={handleChange('publico_alvo')}
                             defaultValue={values.publico_alvo}
+                            disabled
                           />
                         </FormGroup>
                       </Col>
@@ -149,10 +157,11 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Descrição evangelística/social do Projeto:</label>
                           <Input
-                            placeholder=""
+                            placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
                             type="textarea"
                             onChange={handleChange('descricao_evangelistica')}
                             defaultValue={values.descricao_evangelistica}
+                            disabled
                           />
                         </FormGroup>
                       </Col>
@@ -160,7 +169,7 @@ export class Child1 extends Component {
                     <Row>
                       <div className="update ml-auto mr-auto">
                         <Button
-                          color="primary"
+                          color="warning"
                           variant="contained"
                           onClick={this.continue}
                         >Próximo</Button>

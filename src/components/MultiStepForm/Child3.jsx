@@ -64,7 +64,7 @@ export class Child3 extends Component {
                     <Row>
                     <Col>
                       <FormGroup>
-                        <label>**Pessoal:</label>
+                        <label>Pessoal:</label>
                         <Input
                           placeholder="Quantidade de pessoas, remuneração, cadastro"
                           type="textarea"
@@ -116,7 +116,7 @@ export class Child3 extends Component {
                   <Row>
                     <Col>
                       <FormGroup>
-                        <label>**Outros Custos:</label>
+                        <label>Outros Custos:</label>
                         <Input
                           placeholder="Tipo, quantidade, valor"
                           type="textarea"
@@ -140,13 +140,13 @@ export class Child3 extends Component {
                       color="secondary"
                       variant="contained"
                       onClick={this.back}
-                    >Back</Button>
+                    >Anterior</Button>
 
                     <Button
-                      color="primary"
+                      color="warning"
                       variant="contained"
                       onClick={this.continue}
-                    >Continue</Button>
+                    >Próximo</Button>
                     </div>
                   </Row>
               </CardBody>

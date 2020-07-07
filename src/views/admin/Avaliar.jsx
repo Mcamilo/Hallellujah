@@ -30,7 +30,8 @@ class Avaliar extends React.Component {
   }
   
   avaliar(){
-    window.location.replace("#");
+    let id = "123"
+    window.location.replace("avaliar/"+id);
   }
   render() {
     return (
@@ -62,7 +63,7 @@ class Avaliar extends React.Component {
                       <td>01/01/2020</td>   
                       <td>01/01/2021</td>   
                       <td>R$ 10.000,00</td>   
-                      <td className="detalhes"><Button color='danger' onClick={this.avaliar.bind(this)}>Avaliar</Button></td>
+                      <td className="detalhes"><Button color='warning' onClick={this.avaliar.bind(this)}>Avaliar</Button></td>
                     </tr>
                     <tr>
                       <td>Projeto 2</td>   
@@ -70,7 +71,7 @@ class Avaliar extends React.Component {
                       <td>01/01/2020</td>   
                       <td>01/01/2021</td>   
                       <td>R$ 8.000,00</td>   
-                      <td className="detalhes"><Button color='danger' onClick={this.avaliar.bind(this)}>Avaliar</Button></td>
+                      <td className="detalhes"><Button color='warning' onClick={this.avaliar.bind(this)}>Avaliar</Button></td>
                     </tr>
                     <tr>
                       <td>Projeto 3</td>   
@@ -78,7 +79,7 @@ class Avaliar extends React.Component {
                       <td>01/01/2020</td>   
                       <td>01/01/2021</td>   
                       <td>R$ 15.000,00</td>
-                      <td className="detalhes"><Button color='danger' onClick={this.avaliar.bind(this)}>Avaliar</Button></td>
+                      <td className="detalhes"><Button color='warning' onClick={this.avaliar.bind(this)}>Avaliar</Button></td>
                     </tr>     
                   </tbody>
               </Table>
