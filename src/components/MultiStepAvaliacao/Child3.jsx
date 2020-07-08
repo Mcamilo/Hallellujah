@@ -5,6 +5,7 @@ import {
     CardHeader,
     CardBody,
     CardTitle,
+    CardImg,
     FormGroup,
     Form,
     Input,
@@ -135,8 +136,12 @@ export class Child3 extends Component {
                   <Row>
                     <Col>
                     <FormGroup>
-                      <Label for="exampleCustomFileBrowser">Imagens do projeto (máximo 5mb por imagem)</Label>
-                      <CustomInput type="file" id="exampleCustomFileBrowser" name="customFile" label="Imagens do Projeto" />
+                    <Card>
+                        <CardTitle><b>Imagens do Projeto</b></CardTitle>
+                      <CardBody>
+                        <CardImg top width="100%" src={require("assets/img/kids.jpg")} alt="Crianças" />
+                      </CardBody>
+                    </Card>
                     </FormGroup>
                     </Col>
                   </Row>

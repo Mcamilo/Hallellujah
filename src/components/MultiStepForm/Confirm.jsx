@@ -55,7 +55,7 @@ render(){
     <Modal isOpen={this.state.modal} toggle={this.toggle} className="ModalProjetos">
          <ModalHeader toggle={this.toggle}>Termos de Serviço</ModalHeader>
          <ModalBody>
-         <iframe src="http://www.africau.edu/images/default/sample.pdf" style={{height:"600px", width:"100%"}}></iframe>
+         <iframe src="https://mcamilo.github.io/Hallellujah/src/assets/files/termos.pdf#toolbar=0" style={{height:"600px", width:"100%"}}></iframe>
          </ModalBody>
          <ModalFooter>
            <Button color='warning' onClick={this.toggle}>Ok</Button>

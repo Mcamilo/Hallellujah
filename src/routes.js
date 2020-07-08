@@ -1,5 +1,6 @@
 import AvaliarAdmin from "views/admin/Avaliar.jsx"
 import AvaliarForm from "views/admin/AvaliarForm.jsx"
+import ResultadosAdmin from "views/admin/Resultados.jsx"
 
 import ResultadosUser from "views/user/Resultados.jsx"
 import ProjetoUser from "views/user/Projeto.jsx"
@@ -9,8 +10,16 @@ var routes = [
   {
     path: "/projetos",
     name: "Avaliar Projetos",
-    icon: "nc-icon nc-chart-bar-32",
+    icon: "nc-icon nc-paper",
     component: AvaliarAdmin,
+    layout: "/admin",
+    visible: true
+  },
+  {
+    path: "/avaliados",
+    name: "Projetos Avaliados",
+    icon: "nc-icon nc-single-copy-04",
+    component: ResultadosAdmin,
     layout: "/admin",
     visible: true
   },

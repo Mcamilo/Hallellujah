@@ -62,7 +62,7 @@ export class Child3 extends Component {
                     <Row>
                     <Col>
                       <FormGroup>
-                        <label>**Pessoal:</label>
+                        <label>Pessoal:</label>
                         <Input
                           placeholder="Quantidade de pessoas, remuneração, cadastro"
                           type="textarea"
@@ -127,7 +127,7 @@ export class Child3 extends Component {
                   <Row>
                     <Col>
                       <FormGroup>
-                        <label>**Outros Custos:</label>
+                        <label>Outros Custos:</label>
                         <Input
                           placeholder="Tipo, quantidade, valor"
                           type="textarea"

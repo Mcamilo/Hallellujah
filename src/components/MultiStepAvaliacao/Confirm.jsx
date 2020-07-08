@@ -51,7 +51,7 @@ render(){
         <Col md="8" style={{margin:"0 auto"}}>
           <Card className="card-user">
             <CardHeader>
-              <CardTitle tag="h5">Confirmar Dados</CardTitle>
+              <CardTitle tag="h5">Resumo Dados</CardTitle>
             </CardHeader>
             <CardBody>
               <Row>
@@ -69,14 +69,36 @@ render(){
                   </ListGroup>
                 </Col>
                 </Row>
-
+                <br></br>
                 <Row>
-                <FormGroup check>
-                  <Label check>
-                    <Input type="checkbox"/>{' '}
-                      Li e Aceito os termos descritos no Estatuto da Instituição
-                  </Label>
-                </FormGroup>
+                    <Col>
+                    <FormGroup tag="fieldset">
+                      <legend>Avaliar Projeto</legend>
+                      <FormGroup check>
+                        <Label check>
+                          <Input type="radio" name="radio1" />{' '}
+                          Projeto Aceito <i class="nc-icon nc-check-2"></i>
+                        </Label>
+                      </FormGroup>
+                      <FormGroup check>
+                        <Label check>
+                          <Input type="radio" name="radio1" />{' '}
+                          Projeto Rejeitado <i class="nc-icon nc-simple-remove"></i>
+                        </Label>
+                      </FormGroup>
+                    </FormGroup>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                      <FormGroup>
+                        <label>Justificativa:</label>
+                        <Input
+                          placeholder=""
+                          type="textarea"
+                        />
+                      </FormGroup>
+                    </Col>
                 </Row>
                 <Row>
                 <div className="update ml-auto mr-auto">
@@ -86,10 +108,10 @@ render(){
                   onClick={this.back}
                   >Voltar</Button>
                 <Button
-                  color="primary"
+                  color="warning"
                   variant="contained"
                   onClick={this.continue}
-                >Enviar Cadastro</Button>
+                >Enviar Avaliação</Button>
                 </div>
                 </Row>
             </CardBody>
