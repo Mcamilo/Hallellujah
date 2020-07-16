@@ -33,7 +33,7 @@ export class Child2 extends Component {
               <div className="image">
                 <img
                   alt="..."
-                  src={require("assets/img/hands.png")}
+                  src={require("assets/img/cadastro.png")}
                 />
               </div>
             </Card>
@@ -41,9 +41,9 @@ export class Child2 extends Component {
           </Row>
           <Row >
           <Col md="8" style={{margin:"0 auto"}}>
-            <Card className="card-user">
+            <Card className="card-user loginCard sucesso">
               <CardHeader>
-                <CardTitle tag="h5">Sucesso!</CardTitle>
+                <CardTitle tag="h5">Obrigado</CardTitle>
               </CardHeader>
               <CardBody>
                   <Row>

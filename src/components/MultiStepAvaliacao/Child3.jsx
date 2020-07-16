@@ -36,7 +36,7 @@ export class Child3 extends Component {
               <div className="image">
                 <img
                   alt="..."
-                  src={require("assets/img/children2.png")}
+                  src={require("assets/img/cadastro.png")}
                 />
               </div>
             </Card>
@@ -44,7 +44,7 @@ export class Child3 extends Component {
           </Row>
           <Row >
           <Col md="8" style={{margin:"0 auto"}}>
-            <Card className="card-user">
+            <Card className="card-user loginCard">
               <CardHeader>
                 <CardTitle tag="h5">Dados Financeiros</CardTitle>
               </CardHeader>
@@ -54,7 +54,7 @@ export class Child3 extends Component {
                       <FormGroup>
                         <label>Recursos necessários:</label>
                         <Input
-                          placeholder="Estimativa de Rescursos necessários para o projeto"
+                          placeholder="Estimativa de Recursos necessários para o projeto"
                           type="text"
                           onChange={handleChange('instituicao')}
                           defaultValue={values.instituicao}

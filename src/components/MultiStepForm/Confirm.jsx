@@ -67,7 +67,7 @@ render(){
           <div className="image">
             <img
               alt="..."
-              src={require("assets/img/children2.png")}
+              src={require("assets/img/cadastro.png")}
             />
           </div>
         </Card>
@@ -75,7 +75,7 @@ render(){
       </Row>
       <Row>
         <Col md="8" style={{margin:"0 auto"}}>
-          <Card className="card-user">
+          <Card className="card-user loginCard">
             <CardHeader>
               <CardTitle tag="h5">Confirmar Dados</CardTitle>
             </CardHeader>

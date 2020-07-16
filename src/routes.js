@@ -30,7 +30,7 @@ var routes = [
     component: AvaliarForm,
     layout: "/admin",
     visible:false
-  } 
+  }
 ];
 
 var routes_user = [
@@ -60,5 +60,34 @@ var routes_user = [
   }
 
 ]
+
+var routes_SA = [
+  {
+    path: "/cadastrar-projeto",
+    name: "Cadastrar Projeto",
+    icon: "nc-icon nc-single-copy-04",
+    component: ProjetoUser,
+    layout: "/user",
+    visible: true
+  },
+  {
+    path: "/resultados",
+    name: "Resultados",
+    icon: "nc-icon nc-chart-bar-32",
+    component: ResultadosUser,
+    layout: "/user",
+    visible: true
+  },
+  {
+    path: "/perfil",
+    name: "Perfil",
+    icon: "nc-icon nc-single-02",
+    component: PerfilUser,
+    layout: "/user",
+    visible: true
+  }
+
+]
 export default routes;
 export const routesUser = routes_user;
+export const routesSA = routes_SA;

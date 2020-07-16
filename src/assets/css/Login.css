@@ -10,6 +10,25 @@
   }
   
   body{
-    background: #f4f3ef;
+    background: #000016!important;
     overflow-x: hidden;
+  }
+  .card{
+    margin-bottom: 0;
+  }
+  .card-user .image img {
+    border-radius: 12px 12px 0 0;
+  }
+  .loginCard {
+    border-radius: 0 0 12px 12px;
+  }
+  .logo{
+    width: 16em;
+    margin: 0 auto;
+  }
+  .sidebar{
+    font-weight: bold;
+  }
+  .sucesso{
+    text-align: center;
   }

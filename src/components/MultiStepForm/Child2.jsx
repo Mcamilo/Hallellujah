@@ -33,7 +33,7 @@ export class Child2 extends Component {
               <div className="image">
                 <img
                   alt="..."
-                  src={require("assets/img/children2.png")}
+                  src={require("assets/img/cadastro.png")}
                 />
               </div>
             </Card>
@@ -41,9 +41,9 @@ export class Child2 extends Component {
           </Row>
           <Row >
           <Col md="8" style={{margin:"0 auto"}}>
-            <Card className="card-user">
+            <Card className="card-user loginCard">
               <CardHeader>
-                <CardTitle tag="h5">Dados sobre os Parceiros</CardTitle>
+                <CardTitle tag="h5">Dados sobre os parceiros</CardTitle>
               </CardHeader>
               <CardBody>
                   <Row>
@@ -51,7 +51,7 @@ export class Child2 extends Component {
                       <FormGroup>
                         <label>Instituição:</label>
                         <Input
-                          placeholder="Instituição Parceira"
+                          placeholder="Instituição parceira"
                           type="text"
                           onChange={handleChange('instituicao')}
                           defaultValue={values.instituicao}
@@ -62,7 +62,7 @@ export class Child2 extends Component {
                       <FormGroup>
                         <label>Responsável:</label>
                         <Input
-                          placeholder="Nome Completo"
+                          placeholder="Nome completo"
                           type="text"
                           onChange={handleChange('parceiro_instituicao_responsavel')}
                           defaultValue={values.parceiro_instituicao_responsavel}
@@ -73,9 +73,9 @@ export class Child2 extends Component {
                   <Row>
                     <Col>
                       <FormGroup>
-                        <label>Descrição da Parceria:</label>
+                        <label>Descrição da parceria:</label>
                         <Input
-                          placeholder=""
+                          placeholder="Descreva brevemente"
                           type="textarea"
                           onChange={handleChange('descricao_parceria')}
                           defaultValue={values.descricao_parceria}
@@ -101,7 +101,7 @@ export class Child2 extends Component {
                       <FormGroup>
                         <label>Contatos:</label>
                         <Input
-                          placeholder="Nome e Telefone"
+                          placeholder="Nome e telefone"
                           type="text"
                           onChange={handleChange('contatos')}
                           defaultValue={values.contatos}
@@ -127,7 +127,7 @@ export class Child2 extends Component {
                       <FormGroup>
                         <label>Resultados Esperados:</label>
                         <Input
-                          placeholder=""
+                          placeholder="O que se espera alcançar com esse Projeto"
                           type="text"
                           onChange={handleChange('resultados')}
                           defaultValue={values.resultados}

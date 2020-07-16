@@ -28,7 +28,7 @@ export class Child1 extends Component {
               <div className="image">
                 <img
                   alt="..."
-                  src={require("assets/img/children2.png")}
+                  src={require("assets/img/cadastro.png")}
                 />
               </div>
             </Card>
@@ -36,7 +36,7 @@ export class Child1 extends Component {
           </Row>
           <Row >
           <Col md="8" style={{margin:"0 auto"}}>
-            <Card className="card-user">
+            <Card className="card-user loginCard">
               <CardHeader>
                 <CardTitle tag="h5">Dados sobre o Projeto</CardTitle>
               </CardHeader>
@@ -46,7 +46,7 @@ export class Child1 extends Component {
                       <FormGroup>
                         <label>Título do Projeto:</label>
                         <Input
-                          placeholder=""
+                          placeholder="Título"
                           type="text"
                           onChange={handleChange('titulo')}
                           defaultValue={values.titulo}
@@ -70,7 +70,7 @@ export class Child1 extends Component {
                     <Row>
                       <Col className="pr-1" md="6">
                         <FormGroup>
-                          <label>Data Início</label>
+                          <label>Data início</label>
                           <Input
                             placeholder="xx/xx/xxxx"
                             type="text"
@@ -81,7 +81,7 @@ export class Child1 extends Component {
                       </Col>
                       <Col className="pl-1" md="6">
                         <FormGroup>
-                          <label>Data Término</label>
+                          <label>Data término</label>
                           <Input
                             placeholder="xx/xx/xxxx"
                             type="text"
@@ -122,7 +122,7 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Objetivo(s) Específico(s) do Projeto:</label>
                           <Input
-                            placeholder=""
+                            placeholder="Objetivo"
                             type="text"
                             onChange={handleChange('objetivos_especificos')}
                             defaultValue={values.objetivos_especificos}
@@ -135,7 +135,7 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Público Alvo:</label>
                           <Input
-                            placeholder=""
+                            placeholder="Público"
                             type="text"
                             onChange={handleChange('publico_alvo')}
                             defaultValue={values.publico_alvo}
@@ -149,7 +149,7 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Descrição evangelística/social do Projeto:</label>
                           <Input
-                            placeholder=""
+                            placeholder="Descreva brevemente"
                             type="textarea"
                             onChange={handleChange('descricao_evangelistica')}
                             defaultValue={values.descricao_evangelistica}

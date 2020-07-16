@@ -45,7 +45,7 @@ class Login extends React.Component {
                     <div className="image">
                       <img
                         alt="..."
-                        src={require("assets/img/sao_paulo.png")}
+                        src={require("assets/img/login.png")}
                       />
                     </div>
                   </Card>
@@ -53,9 +53,9 @@ class Login extends React.Component {
                 </Row>
                 <Row >
                 <Col md="8" style={{margin:"0 auto"}}>
-                  <Card className="card-user">
+                  <Card className="card-user loginCard">
                     <CardHeader>
-                      <CardTitle tag="h5">Login</CardTitle>
+                      <CardTitle tag="h5">Login no sistema Hallellujah</CardTitle>
                     </CardHeader>
                     <CardBody>
                       <Form onSubmit={this.handleSignIn}>
@@ -63,7 +63,7 @@ class Login extends React.Component {
                         <Row>
                           <Col>
                             <FormGroup>
-                              <label>Username</label>
+                              <label>Usuário</label>
                               <Input
                                 placeholder="Nome de Usuário"
                                 type="text"
@@ -79,6 +79,7 @@ class Login extends React.Component {
                                 Senha
                               </label>
                               <Input
+                                placeholder="Senha"
                                 type="password"
                                 onChange={e => this.setState({password: e.target.value})}
                                 />
@@ -92,7 +93,7 @@ class Login extends React.Component {
                               color="warning"
                               type="submit"
                             >
-                              Enviar
+                              Entrar
                             </Button>
                           </div>
                         </Row>
