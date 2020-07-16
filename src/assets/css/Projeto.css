@@ -18,7 +18,7 @@ html {
 }
 .card-user .image {
     height: auto;
-    max-height: 200px;
+    /* max-height: 200px; */
 }
 .form-check input[type="checkbox"], .form-check-radio input[type="radio"] {
   opacity: inherit;
