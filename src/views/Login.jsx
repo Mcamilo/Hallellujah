@@ -55,7 +55,7 @@ class Login extends React.Component {
                 <Col md="8" style={{margin:"0 auto"}}>
                   <Card className="card-user loginCard">
                     <CardHeader>
-                      <CardTitle tag="h5">Login no sistema Hallellujah</CardTitle>
+                      <CardTitle tag="h5">Login</CardTitle>
                     </CardHeader>
                     <CardBody>
                       <Form onSubmit={this.handleSignIn}>
