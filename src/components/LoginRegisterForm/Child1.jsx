@@ -10,17 +10,23 @@ import {
   Form,
   Input,
   Row,
-  Col
+  Col,
+  CardFooter
 } from "reactstrap";
 
 export class Child1 extends Component {
+  state = {
+    username: "",
+    password: "",
+    error: ""
+  };
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
   };
 
   render() {
-    const { values, handleChange } = this.props;
+    const { values, handleChange, handleSignIn } = this.props;
     return (
       <>
         <Container>
@@ -40,19 +46,19 @@ export class Child1 extends Component {
                 <Col md="8" style={{margin:"0 auto"}}>
                   <Card className="card-user loginCard">
                     <CardHeader>
-                      <CardTitle tag="h5">Login no sistema Hallellujah</CardTitle>
+                      <CardTitle tag="h5">Login</CardTitle>
                     </CardHeader>
                     <CardBody>
-                      <Form onSubmit={this.handleSignIn}>
+                      <Form onSubmit={handleSignIn}>
                         {this.state.error && <p>{this.state.error}</p>}
                         <Row>
                           <Col>
                             <FormGroup>
-                              <label>Usuário</label>
+                              <label>Email</label>
                               <Input
-                                placeholder="Nome de Usuário"
+                                placeholder="Email de cadastro"
                                 type="text"
-                                onChange={e => this.setState({ username: e.target.value })}
+                                onChange={handleChange('username')}
                               />
                             </FormGroup>
                           </Col>
@@ -66,7 +72,7 @@ export class Child1 extends Component {
                               <Input
                                 placeholder="Senha"
                                 type="password"
-                                onChange={e => this.setState({password: e.target.value})}
+                                onChange={handleChange('password')}
                                 />
                             </FormGroup>
                           </Col>
@@ -84,6 +90,9 @@ export class Child1 extends Component {
                         </Row>
                       </Form>
                     </CardBody>
+                    <CardFooter>
+                      <span>Não possui conta? <b onClick={this.continue} style={{cursor: "pointer"}}>Cadastre-se</b></span>
+                    </CardFooter>
                   </Card>
                 </Col>
               </Row>

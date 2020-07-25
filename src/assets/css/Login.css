@@ -33,4 +33,6 @@
   .sucesso{
     text-align: center;
   }
-  
+  .pointer{
+    cursor: pointer;
+  }

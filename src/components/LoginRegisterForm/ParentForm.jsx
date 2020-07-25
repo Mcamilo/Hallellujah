@@ -6,7 +6,9 @@ export class ParentForm extends Component {
   state = {
     step: 1,
     nome: '',
-    sobrenome: ''
+    sobrenome: '',
+    username: "",
+    password: "",
   };
 
   // Proceed to next step
@@ -24,7 +26,20 @@ export class ParentForm extends Component {
       step: step - 1
     });
   };
-
+  handleSignIn = async e => {
+    console.log("LOGIN")
+    e.preventDefault();
+    const { username, password } = this.state;
+    if (!username || !password) {
+    this.setState({ error: "Preencha e-mail e senha para continuar!" });
+    } else {
+      if(username === "admin" && password === "admin"){
+        this.props.history.push("/admin/projetos");
+      }else if(username === "user" && password === "user"){
+        this.props.history.push("/user/cadastrar-projeto");
+      }
+    }
+}
   // Handle fields change
   handleChange = input => e => {
     this.setState({ [input]: e.target.value });

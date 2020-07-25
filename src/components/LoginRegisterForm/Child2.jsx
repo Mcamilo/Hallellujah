@@ -5,6 +5,7 @@ import {
     CardHeader,
     CardBody,
     CardTitle,
+    CardFooter,
     FormGroup,
     Form,
     Input,
@@ -13,11 +14,7 @@ import {
   } from "reactstrap";
 
 export class Child2 extends Component {
-  continue = e => {
-    e.preventDefault();
-    this.props.nextStep();
-  };
-
+  
   back = e => {
     e.preventDefault();
     this.props.prevStep();
@@ -43,114 +40,116 @@ export class Child2 extends Component {
           <Col md="8" style={{margin:"0 auto"}}>
             <Card className="card-user loginCard">
               <CardHeader>
-                <CardTitle tag="h5">Dados sobre os parceiros</CardTitle>
+                <CardTitle tag="h5">Criar Conta</CardTitle>
               </CardHeader>
               <CardBody>
-                  <Row>
-                    <Col className="pr-1" md="6">
-                      <FormGroup>
-                        <label>Instituição:</label>
-                        <Input
-                          placeholder="Instituição parceira"
-                          type="text"
-                          onChange={handleChange('instituicao')}
-                          defaultValue={values.instituicao}
+              <Form>
+                    <Row>
+                      <Col md="12">
+                        <FormGroup>
+                          <label>Nome Organização</label>
+                          <Input
+                            placeholder="Nome"
+                            type="text"
                           />
-                      </FormGroup>
-                    </Col>
-                    <Col className="pl-1" md="6">
-                      <FormGroup>
-                        <label>Responsável:</label>
-                        <Input
-                          placeholder="Nome completo"
-                          type="text"
-                          onChange={handleChange('parceiro_instituicao_responsavel')}
-                          defaultValue={values.parceiro_instituicao_responsavel}
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <FormGroup>
-                        <label>Descrição da parceria:</label>
-                        <Input
-                          placeholder="Descreva brevemente"
-                          type="textarea"
-                          onChange={handleChange('descricao_parceria')}
-                          defaultValue={values.descricao_parceria}
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <FormGroup>
-                        <label>Projetos em andamento:</label>
-                        <Input
-                          placeholder="Nomes de Projetos com parceria em andamento"
-                          type="text"
-                          onChange={handleChange('publico_alvo')}
-                          defaultValue={values.publico_alvo}
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <FormGroup>
-                        <label>Contatos:</label>
-                        <Input
-                          placeholder="Nome e telefone"
-                          type="text"
-                          onChange={handleChange('contatos')}
-                          defaultValue={values.contatos}
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <FormGroup>
-                        <label>Voluntarios:</label>
-                        <Input
-                          placeholder="Nome, contato, etc. Descrição do trabalho voluntário"
-                          type="textarea"
-                          onChange={handleChange('voluntarios')}
-                          defaultValue={values.voluntarios}
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <FormGroup>
-                        <label>Resultados Esperados:</label>
-                        <Input
-                          placeholder="O que se espera alcançar com esse Projeto"
-                          type="text"
-                          onChange={handleChange('resultados')}
-                          defaultValue={values.resultados}
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <div className="update ml-auto mr-auto">
-                    <Button
-                      color="secondary"
-                      variant="contained"
-                      onClick={this.back}
-                    >Anterior</Button>
-
-                    <Button
-                      color="warning"
-                      variant="contained"
-                      onClick={this.continue}
-                    >Próximo</Button>
-                    </div>
-                  </Row>
+                        </FormGroup>
+                      </Col>
+                    </Row> 
+                    <Row> 
+                      <Col md="12">
+                        <FormGroup>
+                          <label htmlFor="exampleInputEmail1">
+                            Endereço de Email
+                          </label>
+                          <Input placeholder="Email" type="email" />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md="12">
+                        <FormGroup>
+                          <label>Senha</label>
+                          <Input
+                            placeholder="Mais de 6 caractéres"
+                            type="password"
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row> 
+                    <Row>
+                      <Col md="12">
+                        <FormGroup>
+                          <label>Confirmar Senha</label>
+                          <Input
+                            placeholder="Confirme a senha digitada acima"
+                            type="password"
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row> 
+                    <Row>
+                      <Col md="12">
+                        <FormGroup>
+                          <label>Endereço</label>
+                          <Input
+                            placeholder="Endereço"
+                            type="text"
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className="pr-1" md="4">
+                        <FormGroup>
+                          <label>Cidade</label>
+                          <Input
+                            placeholder="Cidade"
+                            type="text"
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col className="px-1" md="4">
+                        <FormGroup>
+                          <label>País</label>
+                          <Input
+                            placeholder="País"
+                            type="text"
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col className="pl-1" md="4">
+                        <FormGroup>
+                          <label>CEP</label>
+                          <Input placeholder="86050-300" type="number" />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md="12">
+                        <FormGroup>
+                          <label>Sobre a Organização</label>
+                          <Input
+                            type="textarea"
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <div className="update ml-auto mr-auto">
+                        <Button
+                          className="btn-round"
+                          color="warning"
+                          type="submit"
+                        >
+                          Cadastrar
+                        </Button>
+                      </div>
+                    </Row>
+                  </Form>
               </CardBody>
+              <CardFooter>
+                <span>Já possui conta? <b onClick={this.back} style={{cursor: "pointer"}}>Logar</b></span>
+              </CardFooter>
             </Card>
           </Col>
         </Row>

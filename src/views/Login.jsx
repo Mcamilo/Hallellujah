@@ -2,109 +2,75 @@ import React from "react";
 import api from '../services/api'
 import { login } from "../services/auth";
 import '../assets/css/Login.css'
-import {
-    Container,
-    Button,
-    Card,
-    CardHeader,
-    CardBody,
-    CardTitle,
-    FormGroup,
-    Form,
-    Input,
-    Row,
-    Col
-  } from "reactstrap";
+import Child1 from '../components/LoginRegisterForm/Child1';
+import Child2 from '../components/LoginRegisterForm/Child2';
 
 class Login extends React.Component {
     state = {
         username: "",
         password: "",
-        error: ""
+        error: "",
+        step: 1
       };
+      
       handleSignIn = async e => {
+          console.log("Login")
           e.preventDefault();
           const { username, password } = this.state;
+          console.log(this.state)
+
           if (!username || !password) {
           this.setState({ error: "Preencha e-mail e senha para continuar!" });
           } else {
-            if(username === "admin" && password === "admin"){
+            if(username === "admin" && password === "hallelujah2020"){
               this.props.history.push("/admin/projetos");
-            }else if(username === "user" && password === "user"){
+            }else if(username === "user" && password === "hallelujah2020"){
               this.props.history.push("/user/cadastrar-projeto");
             }
           }
       }
+        // Proceed to next step
+    nextStep = () => {
+      const { step } = this.state;
+      this.setState({
+        step: step + 1
+      });
+    };
+
+    // Go back to prev step
+    prevStep = () => {
+      const { step } = this.state;
+      this.setState({
+        step: step - 1
+      });
+    };
+    // Handle fields change
+  handleChange = input => e => {
+    this.setState({ [input]: e.target.value });
+  };
     render(){
-        return (
-            <>
-            <Container>
-              <Row style={{paddingTop:"10em"}}>
-                <Col md="8" style={{margin:"0 auto"}} >
-                  <Card className="card-user update ml-auto mr-auto">
-                    <div className="image">
-                      <img
-                        alt="..."
-                        src={require("assets/img/login.png")}
-                      />
-                    </div>
-                  </Card>
-                </Col>
-                </Row>
-                <Row >
-                <Col md="8" style={{margin:"0 auto"}}>
-                  <Card className="card-user loginCard">
-                    <CardHeader>
-                      <CardTitle tag="h5">Login</CardTitle>
-                    </CardHeader>
-                    <CardBody>
-                      <Form onSubmit={this.handleSignIn}>
-                        {this.state.error && <p>{this.state.error}</p>}
-                        <Row>
-                          <Col>
-                            <FormGroup>
-                              <label>Usuário</label>
-                              <Input
-                                placeholder="Nome de Usuário"
-                                type="text"
-                                onChange={e => this.setState({ username: e.target.value })}
-                              />
-                            </FormGroup>
-                          </Col>
-                          </Row>
-                          <Row>
-                          <Col>
-                            <FormGroup>
-                              <label htmlFor="exampleInputEmail1">
-                                Senha
-                              </label>
-                              <Input
-                                placeholder="Senha"
-                                type="password"
-                                onChange={e => this.setState({password: e.target.value})}
-                                />
-                            </FormGroup>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <div className="update ml-auto mr-auto">
-                            <Button
-                              className="btn-round"
-                              color="warning"
-                              type="submit"
-                            >
-                              Entrar
-                            </Button>
-                          </div>
-                        </Row>
-                      </Form>
-                    </CardBody>
-                  </Card>
-                </Col>
-              </Row>
-            </Container>
-          </>
-        );
+      const { step } = this.state;
+      switch (step) {
+        case 1:
+          return (
+            <Child1
+              nextStep={this.nextStep}
+              handleChange={this.handleChange}
+              handleSignIn={this.handleSignIn}
+            />
+          );
+        case 2:
+          return (
+            <Child2
+              nextStep={this.nextStep}
+              prevStep={this.prevStep}
+              handleChange={this.handleChange}
+            />
+          );
+        default:
+          (console.log('This is a multi-step form built with React.'))
+      }
+        
     }
 }
 export default Login;
