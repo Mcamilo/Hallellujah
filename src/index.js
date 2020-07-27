@@ -11,14 +11,16 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 import Login from "views/Login.jsx"
 import AdminLayout from "layouts/Admin.jsx";
 import UserLayout from "layouts/User.jsx";
+import SAdminLayout from "layouts/SuperAdmin.jsx";
 const hist = createBrowserHistory();
 
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
       <Route path="/" exact component={Login}/>
-      <Route path="/admin" render={props => <AdminLayout {...props} />} />
+      <Route path="/conselho" render={props => <AdminLayout {...props} />} />
       <Route path="/user" render={props => <UserLayout {...props} />} />
+      <Route path="/sadmin" render={props => <SAdminLayout {...props} />} />
       <Route path="*" component={() => <h1>404 - Página não encontrada =/</h1>} />
     </Switch>
   </Router>,

@@ -17,7 +17,7 @@ class DashboardSA extends React.Component {
       backgroundColor: "black",
       activeColor: "warning"
     };
-    console.log(routesUser)
+    // console.log(routesSA)
     this.mainPanel = React.createRef();
   }
   componentDidMount() {
@@ -64,14 +64,14 @@ class DashboardSA extends React.Component {
         <Sidebar
           {...this.props}
 
-          routes={routesUser}
+          routes={routesSA}
           bgColor={this.state.backgroundColor}
           activeColor={this.state.activeColor}
         />
         <div className="main-panel" ref={this.mainPanel}>
 
           <Switch>
-            {routesUser.map((prop, key) => {
+            {routesSA.map((prop, key) => {
               return (
                 <this.PrivateRoute
                   path={prop.layout + prop.path}

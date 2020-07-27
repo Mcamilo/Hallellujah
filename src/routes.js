@@ -6,13 +6,17 @@ import ResultadosUser from "views/user/Resultados.jsx"
 import ProjetoUser from "views/user/Projeto.jsx"
 import PerfilUser from "views/user/Perfil.jsx"
 
+import AvaliarSAdmin from "views/super/Avaliar.jsx"
+import AvaliarSForm from "views/super/AvaliarForm.jsx"
+import ResultadosSAdmin from "views/super/Resultados.jsx"
+
 var routes = [
   {
     path: "/projetos",
     name: "Avaliar Projetos",
     icon: "nc-icon nc-paper",
     component: AvaliarAdmin,
-    layout: "/admin",
+    layout: "/conselho",
     visible: true
   },
   {
@@ -20,7 +24,7 @@ var routes = [
     name: "Projetos Avaliados",
     icon: "nc-icon nc-single-copy-04",
     component: ResultadosAdmin,
-    layout: "/admin",
+    layout: "/conselho",
     visible: true
   },
   {
@@ -28,7 +32,7 @@ var routes = [
     name: "Avaliar Projeto",
     icon: "nc-icon nc-chart-bar-32",
     component: AvaliarForm,
-    layout: "/admin",
+    layout: "/conselho",
     visible:false
   }
 ];
@@ -63,30 +67,29 @@ var routes_user = [
 
 var routes_SA = [
   {
-    path: "/cadastrar-projeto",
-    name: "Cadastrar Projeto",
+    path: "/projetos",
+    name: "Avaliar Projetos",
+    icon: "nc-icon nc-paper",
+    component: AvaliarSAdmin,
+    layout: "/admin",
+    visible: true
+  },
+  {
+    path: "/avaliados",
+    name: "Projetos Avaliados",
     icon: "nc-icon nc-single-copy-04",
-    component: ProjetoUser,
-    layout: "/user",
+    component: ResultadosSAdmin,
+    layout: "/admin",
     visible: true
   },
   {
-    path: "/resultados",
-    name: "Resultados",
+    path: "/avaliar/:id",
+    name: "Avaliar Projeto",
     icon: "nc-icon nc-chart-bar-32",
-    component: ResultadosUser,
-    layout: "/user",
-    visible: true
-  },
-  {
-    path: "/perfil",
-    name: "Perfil",
-    icon: "nc-icon nc-single-02",
-    component: PerfilUser,
-    layout: "/user",
-    visible: true
+    component: AvaliarSForm,
+    layout: "/admin",
+    visible:false
   }
-
 ]
 export default routes;
 export const routesUser = routes_user;

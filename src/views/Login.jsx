@@ -22,10 +22,13 @@ class Login extends React.Component {
           if (!username || !password) {
           this.setState({ error: "Preencha e-mail e senha para continuar!" });
           } else {
-            if(username === "admin" && password === "hallelujah2020"){
-              this.props.history.push("/admin/projetos");
+            if(username === "conselho" && password === "hallelujah2020"){
+              this.props.history.push("/conselho/projetos");
             }else if(username === "user" && password === "hallelujah2020"){
               this.props.history.push("/user/cadastrar-projeto");
+            }
+            else if(username === "sadmin" && password === "hallelujah2020"){
+              this.props.history.push("/sadmin/projetos")
             }
           }
       }
