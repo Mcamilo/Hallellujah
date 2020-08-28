@@ -53,8 +53,8 @@ export class Child2 extends Component {
                         <Input
                           placeholder="Instituição parceira"
                           type="text"
-                          onChange={handleChange('instituicao')}
-                          defaultValue={values.instituicao}
+                          onChange={handleChange('instituicao_parceiro')}
+                          defaultValue={values.instituicao_parceiro}
                           />
                       </FormGroup>
                     </Col>
@@ -64,8 +64,8 @@ export class Child2 extends Component {
                         <Input
                           placeholder="Nome completo"
                           type="text"
-                          onChange={handleChange('parceiro_instituicao_responsavel')}
-                          defaultValue={values.parceiro_instituicao_responsavel}
+                          onChange={handleChange('responsavel_parceiro')}
+                          defaultValue={values.responsavel_parceiro}
                         />
                       </FormGroup>
                     </Col>
@@ -90,8 +90,8 @@ export class Child2 extends Component {
                         <Input
                           placeholder="Nomes de Projetos com parceria em andamento"
                           type="text"
-                          onChange={handleChange('publico_alvo')}
-                          defaultValue={values.publico_alvo}
+                          onChange={handleChange('projetos_andamento')}
+                          defaultValue={values.projetos_andamento}
                         />
                       </FormGroup>
                     </Col>
@@ -109,32 +109,7 @@ export class Child2 extends Component {
                       </FormGroup>
                     </Col>
                   </Row>
-                  <Row>
-                    <Col>
-                      <FormGroup>
-                        <label>Voluntarios:</label>
-                        <Input
-                          placeholder="Nome, contato, etc. Descrição do trabalho voluntário"
-                          type="textarea"
-                          onChange={handleChange('voluntarios')}
-                          defaultValue={values.voluntarios}
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <FormGroup>
-                        <label>Resultados Esperados:</label>
-                        <Input
-                          placeholder="O que se espera alcançar com esse Projeto"
-                          type="text"
-                          onChange={handleChange('resultados')}
-                          defaultValue={values.resultados}
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
+                  
                   <Row>
                     <div className="update ml-auto mr-auto">
                     <Button

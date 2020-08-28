@@ -158,6 +158,32 @@ export class Child1 extends Component {
                       </Col>
                     </Row>
                     <Row>
+                    <Col>
+                      <FormGroup>
+                        <label>Voluntarios:</label>
+                        <Input
+                          placeholder="Nome, contato, etc. Descrição do trabalho voluntário"
+                          type="textarea"
+                          onChange={handleChange('voluntarios')}
+                          defaultValue={values.voluntarios}
+                        />
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <FormGroup>
+                        <label>Resultados Esperados:</label>
+                        <Input
+                          placeholder="O que se espera alcançar com esse Projeto"
+                          type="text"
+                          onChange={handleChange('resultados_esperados')}
+                          defaultValue={values.resultados_esperados}
+                        />
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                    <Row>
                       <div className="update ml-auto mr-auto">
                         <Button
                           color="warning"

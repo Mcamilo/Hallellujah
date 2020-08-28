@@ -21,15 +21,26 @@ class Login extends React.Component {
 
           if (!username || !password) {
           this.setState({ error: "Preencha e-mail e senha para continuar!" });
+          alert("Preencha e-mail e senha para continuar!")
           } else {
-            if(username === "conselho" && password === "hallelujah2020"){
-              this.props.history.push("/conselho/projetos");
-            }else if(username === "user" && password === "hallelujah2020"){
-              this.props.history.push("/user/cadastrar-projeto");
-            }
-            else if(username === "sadmin" && password === "hallelujah2020"){
-              this.props.history.push("/sadmin/projetos")
-            }
+            try {
+              // To Do arrumar o login ...
+              const response = await api.post("/", { "email":username,"senha": password });
+              login(response.data.token, response.data.email);
+              if (response.data.papel === 'sadmin') {
+                this.props.history.push("/sadmin/projetos");
+              } else if(response.data.papel === 'admin'){
+                this.props.history.push("/conselho/projetos");
+              } else {
+                this.props.history.push("/user/cadastrar-projeto");
+              }
+            } catch (err) {
+              alert("Houve um problema com o login, verifique suas credenciais.")
+              this.setState({
+              error:
+                  "Houve um problema com o login, verifique suas credenciais."
+              });
+          }
           }
       }
         // Proceed to next step

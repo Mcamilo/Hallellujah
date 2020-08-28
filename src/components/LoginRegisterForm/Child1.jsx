@@ -92,6 +92,7 @@ export class Child1 extends Component {
                     </CardBody>
                     <CardFooter>
                       <span>Não possui conta? <b onClick={this.continue} style={{cursor: "pointer"}}>Cadastre-se</b></span>
+                      <span style={{color:"blue", float:"right", cursor:"pointer"}}>Recuperar Senha</span>
                     </CardFooter>
                   </Card>
                 </Col>

@@ -17,6 +17,7 @@
 
 */
 import React from "react";
+import api from '../../services/api'
 
 // reactstrap components
 import {
@@ -34,62 +35,60 @@ import {
 } from "reactstrap";
 
 class User extends React.Component {
+  state = {
+      nome:"",
+      email:"",
+      endereco:"",
+      cidade:"",
+      pais:"",
+      cep:"",
+      descricao:""
+  };
+  componentWillMount(){
+    api.get('/profileInfo/').then(res=>{
+      this.setState({
+        nome:res.data.nome,
+        email:res.data.email,
+        endereco:res.data.endereco,
+        cidade:res.data.cidade,
+        pais:res.data.pais,
+        cep:res.data.cep,
+        descricao:res.data.descricao,
+      }) 
+      console.log(this.state)
+    })
+  }
+
+  handleUpdate = async e => {
+    e.preventDefault();
+    
+    const { nome, email, senha, endereco, cidade, pais, cep, descricao } = this.state;
+    try {
+        const response = await api.post("/updateInfo", { 
+            nome, 
+            email,
+            senha,
+            endereco,
+            cidade, 
+            pais, 
+            cep, 
+            descricao
+          });              
+        alert("Dados atualizados com sucesso!")
+        window.location.reload(false);
+
+    } catch (err) {
+        this.setState({
+        error:
+            "Houve um problema com o envio, verifique os campos."
+        });
+    }
+}
   render() {
     return (
       <>
         <div className="content">
           <Row>
-            <Col md="4">
-              <Card className="card-user">
-                <div className="image">
-                  <img
-                    alt="..."
-                    src={require("assets/img/damir-bosnjak.jpg")}
-                  />
-                </div>
-                <CardBody>
-                  <div className="author">
-                    <a href="#" onClick={e => e.preventDefault()}>
-                      <img
-                        alt="..."
-                        className="avatar border-gray"
-                        src={require("assets/img/mike.jpg")}
-                      />
-                      <h5 className="title">Organização A</h5>
-                    </a>
-                    <p className="description">@perfilOrganização</p>
-                  </div>
-                  
-                </CardBody>
-                <CardFooter>
-                  <hr />
-                  <div className="button-container">
-                    <Row>
-                      <Col className="ml-auto" lg="3" md="6" xs="6">
-                        <h5>
-                          2 <br />
-                          <small>Aguardando Avaliação</small>
-                        </h5>
-                      </Col>
-                      <Col className="ml-auto mr-auto" lg="4" md="6" xs="6">
-                        <h5>
-                          3 <br />
-                          <small>Aprovados</small>
-
-                        </h5>
-                      </Col>
-                      <Col className="mr-auto" lg="3">
-                        <h5>
-                          1 <br />
-                          <small>Não Aprovados</small>
-                        </h5>
-                      </Col>
-                    </Row>
-                  </div>
-                </CardFooter>
-              </Card>
-              
-            </Col>
             <Col md="8">
               <Card className="card-user">
                 <CardHeader>
@@ -102,28 +101,12 @@ class User extends React.Component {
                         <FormGroup>
                           <label>Nome Organização</label>
                           <Input
-                            defaultValue="Creative Code Inc."
-                            placeholder="Company"
+                            // defaultValue="Creative Code Inc."
+                            // placeholder="Company"
                             type="text"
+                            defaultValue={this.state.nome || ''}
+                            onChange={e => this.setState({ nome: e.target.value })}
                           />
-                        </FormGroup>
-                      </Col>
-                      <Col className="px-1" md="3">
-                        <FormGroup>
-                          <label>Usuário</label>
-                          <Input
-                            defaultValue="michael23"
-                            placeholder="Username"
-                            type="text"
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className="pl-1" md="4">
-                        <FormGroup>
-                          <label htmlFor="exampleInputEmail1">
-                            Endereço de Email
-                          </label>
-                          <Input placeholder="Email" type="email" />
                         </FormGroup>
                       </Col>
                     </Row>
@@ -133,9 +116,9 @@ class User extends React.Component {
                         <FormGroup>
                           <label>Endereço</label>
                           <Input
-                            defaultValue="São Paulo, Brasil."
-                            placeholder="Endereço"
                             type="text"
+                            defaultValue={this.state.endereco || ''}
+                            onChange={e => this.setState({endereco: e.target.value })}
                           />
                         </FormGroup>
                       </Col>
@@ -145,9 +128,9 @@ class User extends React.Component {
                         <FormGroup>
                           <label>Cidade</label>
                           <Input
-                            defaultValue="São Paulo"
-                            placeholder="Cidade"
                             type="text"
+                            defaultValue={this.state.cidade || ''}
+                            onChange={e => this.setState({ cidade: e.target.value })}
                           />
                         </FormGroup>
                       </Col>
@@ -155,16 +138,20 @@ class User extends React.Component {
                         <FormGroup>
                           <label>País</label>
                           <Input
-                            defaultValue="Brasil"
-                            placeholder="País"
                             type="text"
+                            defaultValue={this.state.pais || ''}
+                            onChange={e => this.setState({ pais: e.target.value })}
                           />
                         </FormGroup>
                       </Col>
                       <Col className="pl-1" md="4">
                         <FormGroup>
                           <label>CEP</label>
-                          <Input placeholder="86050-300" type="number" />
+                          <Input 
+                          type="text" 
+                          defaultValue={this.state.cep || ''}
+                          onChange={e => this.setState({ cep: e.target.value })}
+                          />
                         </FormGroup>
                       </Col>
                     </Row>
@@ -174,7 +161,8 @@ class User extends React.Component {
                           <label>Sobre a Organização</label>
                           <Input
                             type="textarea"
-                            defaultValue=""
+                            placeholder={this.state.descricao}
+                            onChange={e => this.setState({ descricao: e.target.value })}
                           />
                         </FormGroup>
                       </Col>
@@ -185,6 +173,7 @@ class User extends React.Component {
                           className="btn-round"
                           color="warning"
                           type="submit"
+                          onClick={this.handleUpdate}
                         >
                           Atualizar Informações
                         </Button>

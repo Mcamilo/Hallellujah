@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import ReactCrop from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
+import NotificationAlert from "react-notification-alert";
+
 import {
     Button,
     Card,
@@ -15,6 +19,54 @@ import {
   } from "reactstrap";
 
 export class Child3 extends Component {
+  state = {
+    src: null,
+    crop: {
+      unit: '%',
+      width: 30,
+      aspect:1,
+    },
+    visible: true
+  };
+  notificationAlert = React.createRef();
+  notify(place) {
+    var color = Math.floor(Math.random() * 5 + 1);
+    var type;
+    switch (color) {
+      case 1:
+        type = "primary";
+        break;
+      case 2:
+        type = "success";
+        break;
+      case 3:
+        type = "danger";
+        break;
+      case 4:
+        type = "warning";
+        break;
+      case 5:
+        type = "info";
+        break;
+      default:
+        break;
+    }
+    var options = {};
+    options = {
+      place: place,
+      message: (
+        <div>
+          <div>
+              A imagem foi salva com sucesso!
+          </div>
+        </div>
+      ),
+      type: type,
+      icon: "nc-icon nc-bell-55",
+      autoDismiss: 7
+    };
+    this.notificationAlert.current.notificationAlert(options);
+  }
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -25,10 +77,90 @@ export class Child3 extends Component {
     this.props.prevStep();
   };
 
+  saveImage = () => {
+
+  }
+
+  onSelectFile = e => {
+    if (e.target.files && e.target.files.length > 0) {
+      const reader = new FileReader();
+      reader.addEventListener('load', () =>
+        this.setState({ src: reader.result }),
+      );
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+
+  // If you setState the crop in here you should return false.
+  onImageLoaded = image => {
+    this.imageRef = image;
+  };
+
+  onCropComplete = crop => {
+    this.makeClientCrop(crop);
+  };
+
+  onCropChange = (crop, percentCrop) => {
+    // You could also use percentCrop:
+    // this.setState({ crop: percentCrop });
+    this.setState({ crop });
+  };
+
+  async makeClientCrop(crop) {
+    if (this.imageRef && crop.width && crop.height) {
+      const croppedImageUrl = await this.getCroppedImg(
+        this.imageRef,
+        crop,
+        'newFile.jpeg'
+      );
+      this.props.handleImagemSrc(croppedImageUrl)
+      this.setState({ croppedImageUrl });
+    }
+  }
+
+  getCroppedImg(image, crop, fileName) {
+    const canvas = document.createElement('canvas');
+    const scaleX = image.naturalWidth / image.width;
+    const scaleY = image.naturalHeight / image.height;
+    canvas.width = crop.width;
+    canvas.height = crop.height;
+    const ctx = canvas.getContext('2d');
+
+    ctx.drawImage(
+      image,
+      crop.x * scaleX,
+      crop.y * scaleY,
+      crop.width * scaleX,
+      crop.height * scaleY,
+      0,
+      0,
+      crop.width,
+      crop.height
+    );
+
+    return new Promise((resolve, reject) => {
+      canvas.toBlob(blob => {
+        if (!blob) {
+          //reject(new Error('Canvas is empty'));
+          console.error('Canvas is empty');
+          return;
+        }
+        blob.name = fileName;
+        
+        window.URL.revokeObjectURL(this.fileUrl);
+        this.fileUrl = window.URL.createObjectURL(blob);        
+        this.props.handleBlob(blob)
+        resolve(this.fileUrl);
+      }, {type: 'image/jpeg'});
+    });
+  }
+
   render() {
-    const { values, handleChange } = this.props;
+    const { crop, croppedImageUrl, src } = this.state;
+    const { values, handleChange, handleImagemSrc } = this.props;
     return (
       <>
+      <NotificationAlert ref={this.notificationAlert} />
         <Row style={{paddingTop:"2em"}}>
           <Col md="8" style={{margin:"0 auto"}} >
             <Card className="card-user update ml-auto mr-auto">
@@ -55,8 +187,8 @@ export class Child3 extends Component {
                         <Input
                           placeholder="Estimativa de Rescursos necessários para o projeto"
                           type="text"
-                          onChange={handleChange('instituicao')}
-                          defaultValue={values.instituicao}
+                          onChange={handleChange('recursos_necessarios')}
+                          defaultValue={values.recursos_necessarios}
                           />
                       </FormGroup>
                     </Col>
@@ -68,8 +200,8 @@ export class Child3 extends Component {
                         <Input
                           placeholder="Quantidade de pessoas, remuneração, cadastro"
                           type="textarea"
-                          onChange={handleChange('parceiro_instituicao_responsavel')}
-                          defaultValue={values.parceiro_instituicao_responsavel}
+                          onChange={handleChange('pessoal')}
+                          defaultValue={values.pessoal}
                         />
                       </FormGroup>
                     </Col>
@@ -81,8 +213,8 @@ export class Child3 extends Component {
                         <Input
                           placeholder="Tipo, quantidade, valor"
                           type="textarea"
-                          onChange={handleChange('publico_alvo')}
-                          defaultValue={values.publico_alvo}
+                          onChange={handleChange('locacao')}
+                          defaultValue={values.locacao}
                         />
                       </FormGroup>
                     </Col>
@@ -94,8 +226,8 @@ export class Child3 extends Component {
                         <Input
                           placeholder="Tipo, quantidade, valor"
                           type="text"
-                          onChange={handleChange('contatos')}
-                          defaultValue={values.contatos}
+                          onChange={handleChange('equipamentos')}
+                          defaultValue={values.equipamentos}
                         />
                       </FormGroup>
                     </Col>
@@ -103,12 +235,12 @@ export class Child3 extends Component {
                   <Row>
                     <Col>
                       <FormGroup>
-                        <label>Materias de forma geral:</label>
+                        <label>Materiais de forma geral:</label>
                         <Input
                           placeholder="Tipo, quantidade, valor"
                           type="textarea"
-                          onChange={handleChange('contatos')}
-                          defaultValue={values.contatos}
+                          onChange={handleChange('materiais')}
+                          defaultValue={values.materiais}
                         />
                       </FormGroup>
                     </Col>
@@ -120,8 +252,8 @@ export class Child3 extends Component {
                         <Input
                           placeholder="Tipo, quantidade, valor"
                           type="textarea"
-                          onChange={handleChange('voluntarios')}
-                          defaultValue={values.voluntarios}
+                          onChange={handleChange('outros_custos')}
+                          defaultValue={values.outros_custos}
                         />
                       </FormGroup>
                     </Col>
@@ -129,8 +261,35 @@ export class Child3 extends Component {
                   <Row>
                     <Col>
                     <FormGroup>
-                      <Label for="exampleCustomFileBrowser">Imagens do projeto (máximo 5mb por imagem)</Label>
-                      <CustomInput type="file" id="exampleCustomFileBrowser" name="customFile" label="Imagens do Projeto" />
+                      <Label for="exampleCustomFileBrowser">Imagem de capa do Projeto (máximo 5mb por imagem)</Label>
+                      
+                      <div className="upload-btn-wrapper">
+                        <button className="btnr" title="Clique aqui para selecionar um arquivo">Selecionar Imagem</button>
+                        {/* <span>Não há arquivos selecionados</span> */}
+                        <input type="file" name="myfile" title="Clique aqui para selecionar um arquivo" accept="image/*" onChange={this.onSelectFile}  />
+                      </div>
+                      {src && (
+                        
+                        <Row>  
+                          <Col md="8">
+                          <ReactCrop
+                          src={src}
+                          crop={crop}
+                          ruleOfThirds
+                          circularCrop
+                          onImageLoaded={this.onImageLoaded}
+                          onComplete={this.onCropComplete}
+                          onChange={this.onCropChange}                          
+                          />
+                          </Col>
+                          <Col pl="4" style={{display:"flex",alignItems:"center"}}>
+                          <Button
+                          color="primary"
+                          onClick={() => this.notify("tc")}
+                          >Salvar Imagem</Button>
+                          </Col>
+                        </Row>  
+                      )}
                     </FormGroup>
                     </Col>
                   </Row>

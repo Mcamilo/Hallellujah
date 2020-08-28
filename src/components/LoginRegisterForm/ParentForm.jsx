@@ -40,6 +40,38 @@ export class ParentForm extends Component {
       }
     }
 }
+
+handleSignUp = async e => {
+  e.preventDefault();
+  const { nome, email, senha, endereco, cidade, pais, cep, descricao, confirmar_senha } = this.state;
+  
+  if (!nome || !email ||! senha || !endereco || !cidade || !pais || !cep || !descricao || !confirmar_senha) {
+    alert("Preencha todos os campos necessários")
+  }
+  else if(senha !== confirmar_senha){
+    alert("Senha não confirmada")
+  }else {
+  try {
+      const response = await api.post("/registrar", { 
+          nome, 
+          email,
+          senha,
+          endereco,
+          cidade, 
+          pais, 
+          cep, 
+          descricao
+        });              
+      alert("Conta criada com sucesso!")
+
+  } catch (err) {
+      this.setState({
+      error:
+          "Houve um problema com o envio, verifique os campos."
+      });
+  }
+  }
+}
   // Handle fields change
   handleChange = input => e => {
     this.setState({ [input]: e.target.value });

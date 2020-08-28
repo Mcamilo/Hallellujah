@@ -5,6 +5,7 @@ import Child3 from './Child3';
 import Confirm from './Confirm';
 import Success from './Success';
 
+
 export class ParentForm extends Component {
   state = {
     step: 1,
@@ -32,6 +33,12 @@ export class ParentForm extends Component {
   handleChange = input => e => {
     this.setState({ [input]: e.target.value });
   };
+  handleImagemSrc = imgsrc =>{
+    this.setState({imagem_url: imgsrc})
+  }
+  handleBlob = blob =>{
+    this.setState({blob})
+  }
 
   render() {
     const { step } = this.state;
@@ -44,7 +51,22 @@ export class ParentForm extends Component {
       objetivos_gerais,
       objetivos_especificos,
       publico_alvo,
-      descricao_evangelistica
+      descricao_evangelistica,
+      instituicao_parceiro,
+      responsavel_parceiro,
+      descricao_parceria,
+      projetos_andamento,
+      contatos,
+      voluntarios,
+      resultados_esperados,
+      recursos_necessarios,
+      pessoal,
+      locacao,
+      equipamentos,
+      materiais,
+      outros_custos,
+      imagem_url,
+      blob
      } = this.state;
     const values = { titulo,
     responsavel,
@@ -54,7 +76,23 @@ export class ParentForm extends Component {
     objetivos_gerais,
     objetivos_especificos,
     publico_alvo,
-    descricao_evangelistica};
+    descricao_evangelistica,
+    instituicao_parceiro,
+    responsavel_parceiro,
+    descricao_parceria,
+    projetos_andamento,
+    contatos,
+    voluntarios,
+    resultados_esperados,
+    recursos_necessarios,
+    pessoal,
+    locacao,
+    equipamentos,
+    materiais,
+    outros_custos,
+    imagem_url,
+    blob
+  };
 
     switch (step) {
       case 1:
@@ -80,6 +118,8 @@ export class ParentForm extends Component {
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
+            handleImagemSrc={this.handleImagemSrc}
+            handleBlob={this.handleBlob}
             values={values}
           />
         );

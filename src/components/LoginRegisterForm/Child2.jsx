@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import api from '../../services/api'
+
 import {
     Button,
     Card,
@@ -14,14 +16,56 @@ import {
   } from "reactstrap";
 
 export class Child2 extends Component {
-  
+  state = {
+    email:"",
+    senha:"",
+    nome:"",
+    endereco:"",
+    cidade:"",
+    pais:"",
+    cep:"",
+    descricao:""
+  };
   back = e => {
     e.preventDefault();
     this.props.prevStep();
   };
+  
+  handleSignUp = async e => {
+    e.preventDefault();
+    const { nome, email, senha, endereco, cidade, pais, cep, descricao, confirmar_senha } = this.state;
+    
+    if (!nome || !email ||! senha || !endereco || !cidade || !pais || !cep || !descricao || !confirmar_senha) {
+      alert("Preencha todos os campos necessários")
+    }
+    else if(senha !== confirmar_senha){
+      alert("Senha não confirmada")
+    }else {
+    try {
+        const response = await api.post("/registrar", { 
+            nome, 
+            email,
+            senha,
+            endereco,
+            cidade, 
+            pais, 
+            cep, 
+            descricao
+          });              
+        alert("Conta criada com sucesso!")
+        window.location.reload(false);
 
+    } catch (err) {
+        this.setState({
+        error:
+            "Houve um problema com o envio, verifique os campos."
+        });
+    }
+    }
+}
   render() {
     const { values, handleChange } = this.props;
+    
     return (
       <>
         <Row style={{paddingTop:"2em"}}>
@@ -51,6 +95,7 @@ export class Child2 extends Component {
                           <Input
                             placeholder="Nome"
                             type="text"
+                            onChange={e => this.setState({ nome: e.target.value })}
                           />
                         </FormGroup>
                       </Col>
@@ -61,7 +106,11 @@ export class Child2 extends Component {
                           <label htmlFor="exampleInputEmail1">
                             Endereço de Email
                           </label>
-                          <Input placeholder="Email" type="email" />
+                          <Input 
+                            placeholder="Email" 
+                            type="email" 
+                            onChange={e => this.setState({email: e.target.value})} 
+                            />
                         </FormGroup>
                       </Col>
                     </Row>
@@ -72,6 +121,7 @@ export class Child2 extends Component {
                           <Input
                             placeholder="Mais de 6 caractéres"
                             type="password"
+                            onChange={e => this.setState({senha: e.target.value})} 
                           />
                         </FormGroup>
                       </Col>
@@ -83,6 +133,7 @@ export class Child2 extends Component {
                           <Input
                             placeholder="Confirme a senha digitada acima"
                             type="password"
+                            onChange={e => this.setState({confirmar_senha: e.target.value})} 
                           />
                         </FormGroup>
                       </Col>
@@ -94,6 +145,7 @@ export class Child2 extends Component {
                           <Input
                             placeholder="Endereço"
                             type="text"
+                            onChange={e => this.setState({endereco: e.target.value})} 
                           />
                         </FormGroup>
                       </Col>
@@ -105,6 +157,7 @@ export class Child2 extends Component {
                           <Input
                             placeholder="Cidade"
                             type="text"
+                            onChange={e => this.setState({cidade: e.target.value})} 
                           />
                         </FormGroup>
                       </Col>
@@ -114,13 +167,18 @@ export class Child2 extends Component {
                           <Input
                             placeholder="País"
                             type="text"
+                            onChange={e => this.setState({pais: e.target.value})} 
                           />
                         </FormGroup>
                       </Col>
                       <Col className="pl-1" md="4">
                         <FormGroup>
                           <label>CEP</label>
-                          <Input placeholder="86050-300" type="number" />
+                          <Input 
+                            placeholder="86050-300" 
+                            type="number" 
+                            onChange={e => this.setState({cep: e.target.value})} 
+                            />
                         </FormGroup>
                       </Col>
                     </Row>
@@ -130,6 +188,8 @@ export class Child2 extends Component {
                           <label>Sobre a Organização</label>
                           <Input
                             type="textarea"
+                            onChange={e => this.setState({descricao: e.target.value})} 
+
                           />
                         </FormGroup>
                       </Col>
@@ -140,6 +200,7 @@ export class Child2 extends Component {
                           className="btn-round"
                           color="warning"
                           type="submit"
+                          onClick={this.handleSignUp}
                         >
                           Cadastrar
                         </Button>
