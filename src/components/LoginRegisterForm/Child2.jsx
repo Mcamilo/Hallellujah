@@ -35,7 +35,7 @@ export class Child2 extends Component {
     e.preventDefault();
     const { nome, email, senha, endereco, cidade, pais, cep, descricao, confirmar_senha } = this.state;
     
-    if (!nome || !email ||! senha || !endereco || !cidade || !pais || !cep || !descricao || !confirmar_senha) {
+    if (!nome || !email ||! senha || !endereco || !cidade || !pais || !descricao || !confirmar_senha) {
       alert("Preencha todos os campos necessários")
     }
     else if(senha !== confirmar_senha){
@@ -176,7 +176,7 @@ export class Child2 extends Component {
                           <label>CEP</label>
                           <Input 
                             placeholder="86050-300" 
-                            type="number" 
+                            type="text" 
                             onChange={e => this.setState({cep: e.target.value})} 
                             />
                         </FormGroup>
