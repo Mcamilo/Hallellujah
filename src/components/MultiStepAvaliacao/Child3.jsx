@@ -56,8 +56,7 @@ export class Child3 extends Component {
                         <Input
                           placeholder="Estimativa de Recursos necessários para o projeto"
                           type="text"
-                          onChange={handleChange('instituicao')}
-                          defaultValue={values.instituicao}
+                          defaultValue={values.recursos_necessarios}
                           disabled
                           />
                       </FormGroup>
@@ -70,8 +69,7 @@ export class Child3 extends Component {
                         <Input
                           placeholder="Quantidade de pessoas, remuneração, cadastro"
                           type="textarea"
-                          onChange={handleChange('parceiro_instituicao_responsavel')}
-                          defaultValue={values.parceiro_instituicao_responsavel}
+                          defaultValue={values.pessoal}
                           disabled
                         />
                       </FormGroup>
@@ -84,8 +82,7 @@ export class Child3 extends Component {
                         <Input
                           placeholder="Tipo, quantidade, valor"
                           type="textarea"
-                          onChange={handleChange('publico_alvo')}
-                          defaultValue={values.publico_alvo}
+                          defaultValue={values.locacao}
                           disabled
                         />
                       </FormGroup>
@@ -98,8 +95,7 @@ export class Child3 extends Component {
                         <Input
                           placeholder="Tipo, quantidade, valor"
                           type="text"
-                          onChange={handleChange('contatos')}
-                          defaultValue={values.contatos}
+                          defaultValue={values.equipamentos}
                           disabled
                         />
                       </FormGroup>
@@ -112,8 +108,7 @@ export class Child3 extends Component {
                         <Input
                           placeholder="Tipo, quantidade, valor"
                           type="textarea"
-                          onChange={handleChange('contatos')}
-                          defaultValue={values.contatos}
+                          defaultValue={values.materiais}
                           disabled
                         />
                       </FormGroup>
@@ -126,8 +121,7 @@ export class Child3 extends Component {
                         <Input
                           placeholder="Tipo, quantidade, valor"
                           type="textarea"
-                          onChange={handleChange('voluntarios')}
-                          defaultValue={values.voluntarios}
+                          defaultValue={values.outros_custos}
                           disabled
                         />
                       </FormGroup>
@@ -139,7 +133,7 @@ export class Child3 extends Component {
                     <Card>
                         <CardTitle><b>Imagens do Projeto</b></CardTitle>
                       <CardBody>
-                        <CardImg top width="100%" src={require("assets/img/kids.jpg")} alt="Crianças" />
+                        <CardImg top width="100%" src={`https://storage.googleapis.com/instituto-hallelujah-bucket/${values.imagem_url}`} alt="Capa do Projeto" />
                       </CardBody>
                     </Card>
                     </FormGroup>

@@ -20,7 +20,7 @@ ReactDOM.render(
       <Route path="/" exact component={Login}/>
       <Route path="/conselho" render={props => <AdminLayout {...props} />} />
       <Route path="/user" render={props => <UserLayout {...props} />} />
-      <Route path="/sadmin" render={props => <SAdminLayout {...props} />} />
+      <Route path="/admin" render={props => <SAdminLayout {...props} />} />
       <Route path="*" component={() => <h1>404 - Página não encontrada =/</h1>} />
     </Switch>
   </Router>,

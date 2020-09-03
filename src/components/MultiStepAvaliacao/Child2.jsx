@@ -43,7 +43,7 @@ export class Child2 extends Component {
           <Col md="8" style={{margin:"0 auto"}}>
             <Card className="card-user loginCard">
               <CardHeader>
-                <CardTitle tag="h5">Dados sobre os Parceiros</CardTitle>
+                <CardTitle tag="h5">Dados sobre os parceiros</CardTitle>
               </CardHeader>
               <CardBody>
                   <Row>
@@ -51,11 +51,10 @@ export class Child2 extends Component {
                       <FormGroup>
                         <label>Instituição:</label>
                         <Input
-                          placeholder="Instituição Parceira"
+                          placeholder="Instituição parceira"
                           type="text"
-                          onChange={handleChange('instituicao')}
-                          defaultValue={values.instituicao}
                           disabled
+                          defaultValue={values.instituicao_parceiro}
                           />
                       </FormGroup>
                     </Col>
@@ -63,11 +62,10 @@ export class Child2 extends Component {
                       <FormGroup>
                         <label>Responsável:</label>
                         <Input
-                          placeholder="Nome Completo"
+                          placeholder="Nome completo"
                           type="text"
-                          onChange={handleChange('parceiro_instituicao_responsavel')}
-                          defaultValue={values.parceiro_instituicao_responsavel}
                           disabled
+                          defaultValue={values.responsavel_parceiro}
                         />
                       </FormGroup>
                     </Col>
@@ -75,13 +73,12 @@ export class Child2 extends Component {
                   <Row>
                     <Col>
                       <FormGroup>
-                        <label>Descrição da Parceria:</label>
+                        <label>Descrição da parceria:</label>
                         <Input
-                          placeholder=""
+                          placeholder="Descreva brevemente"
                           type="textarea"
-                          onChange={handleChange('descricao_parceria')}
-                          defaultValue={values.descricao_parceria}
                           disabled
+                          defaultValue={values.descricao_parceria}
                         />
                       </FormGroup>
                     </Col>
@@ -93,9 +90,8 @@ export class Child2 extends Component {
                         <Input
                           placeholder="Nomes de Projetos com parceria em andamento"
                           type="text"
-                          onChange={handleChange('publico_alvo')}
-                          defaultValue={values.publico_alvo}
                           disabled
+                          defaultValue={values.projetos_andamento}
                         />
                       </FormGroup>
                     </Col>
@@ -105,44 +101,15 @@ export class Child2 extends Component {
                       <FormGroup>
                         <label>Contatos:</label>
                         <Input
-                          placeholder="Nome e Telefone"
+                          placeholder="Nome e telefone"
                           type="text"
-                          onChange={handleChange('contatos')}
+                          disabled
                           defaultValue={values.contatos}
-                          disabled
                         />
                       </FormGroup>
                     </Col>
                   </Row>
-                  <Row>
-                    <Col>
-                      <FormGroup>
-                        <label>Voluntarios:</label>
-                        <Input
-                          placeholder="Nome, contato, etc. Descrição do trabalho voluntário"
-                          type="textarea"
-                          onChange={handleChange('voluntarios')}
-                          defaultValue={values.voluntarios}
-                          disabled
-
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <FormGroup>
-                        <label>Resultados Esperados:</label>
-                        <Input
-                          placeholder=""
-                          type="text"
-                          onChange={handleChange('resultados')}
-                          defaultValue={values.resultados}
-                          disabled
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
+                  
                   <Row>
                     <div className="update ml-auto mr-auto">
                     <Button

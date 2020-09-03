@@ -3,6 +3,7 @@ import React from "react";
 // react plugin used to create charts
 
 import '../../assets/css/User.css'
+import api from '../../services/api'
 
 // reactstrap components
 import {
@@ -20,19 +21,16 @@ class Avaliar extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        processos:[],
-
+        projetos:[],
       };
     }
 
   componentDidMount(){
-      
+    api.get('/projetosAvaliar/').then(res=>{
+      this.setState({projetos:res.data.docs}) 
+    })
   }
   
-  avaliar(){
-    let id = "123"
-    window.location.replace("avaliar/"+id);
-  }
   render() {
     return (
       <>
@@ -53,34 +51,24 @@ class Avaliar extends React.Component {
                       <th>Início</th>
                       <th>Término</th>
                       <th>Orçamento</th>
+                      <th>Status</th>
                       <th style={{textAlign: "center"}}>Ação</th>
                       </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Projeto 1</td>   
-                      <td>Responsável A</td>   
-                      <td>01/01/2020</td>   
-                      <td>01/01/2021</td>   
-                      <td>R$ 10.000,00</td>   
-                      <td className="detalhes"><Button color='warning' onClick={this.avaliar.bind(this)}>Avaliar</Button></td>
-                    </tr>
-                    <tr>
-                      <td>Projeto 2</td>   
-                      <td>Responsável B</td>   
-                      <td>01/01/2020</td>   
-                      <td>01/01/2021</td>   
-                      <td>R$ 8.000,00</td>   
-                      <td className="detalhes"><Button color='warning' onClick={this.avaliar.bind(this)}>Avaliar</Button></td>
-                    </tr>
-                    <tr>
-                      <td>Projeto 3</td>   
-                      <td>Responsável C</td>   
-                      <td>01/01/2020</td>   
-                      <td>01/01/2021</td>   
-                      <td>R$ 15.000,00</td>
-                      <td className="detalhes"><Button color='warning' onClick={this.avaliar.bind(this)}>Avaliar</Button></td>
-                    </tr>     
+                    {
+                      this.state.projetos.map((projeto,index)=> 
+                      <tr key={projeto._id}>
+                          <td>{projeto.titulo||"-----"}</td>
+                          <td>{projeto.responsavel||"-----"}</td>
+                          <td>{projeto.d_inicio||"-----"}</td>
+                          <td>{projeto.d_final||"-----"}</td>
+                          <td>{projeto.recursos_necessarios||"-----"}</td>
+                          <td>{projeto.status||"-----"}</td>
+                          <td className="detalhes"><Button color='warning' onClick={()=>{window.location.replace("avaliar/"+projeto._id)}}>Avaliar</Button></td>
+                      </tr>
+                      )
+                    }                         
                   </tbody>
               </Table>
               </CardBody>

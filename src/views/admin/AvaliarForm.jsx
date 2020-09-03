@@ -6,11 +6,12 @@ import { ParentForm } from '../../components/MultiStepAvaliacao/ParentForm'
 class AvaliarForm extends Component {
     
     render(){
-        console.log(this.props.match.params.id)
         return (
             <>
             <div className="content">
-            <ParentForm />
+            <ParentForm 
+                id_projeto={this.props.match.params.id}
+            />
             </div>
             </>
         );

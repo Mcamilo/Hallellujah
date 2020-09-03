@@ -46,9 +46,8 @@ export class Child1 extends Component {
                       <FormGroup>
                         <label>Título do Projeto:</label>
                         <Input
-                          placeholder="PROJETO 123"
+                          placeholder="Carregando..."
                           type="text"
-                          onChange={handleChange('titulo')}
                           defaultValue={values.titulo}
                           disabled
                         />
@@ -60,9 +59,8 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Responsável:</label>
                           <Input
-                            placeholder="RESPONSÁVEL A"
+                            placeholder="Carregando..."
                             type="text"
-                            onChange={handleChange('responsavel')}
                             defaultValue={values.responsavel}
                             disabled
                           />
@@ -74,9 +72,8 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Data Início</label>
                           <Input
-                            placeholder="27/07/1994"
+                            placeholder="Carregando..."
                             type="text"
-                            onChange={handleChange('inicio')}
                             defaultValue={values.inicio}
                             disabled
                           />
@@ -86,9 +83,8 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Data Término</label>
                           <Input
-                            placeholder="10/07/2020"
+                            placeholder="Carregando..."
                             type="text"
-                            onChange={handleChange('termino')}
                             defaultValue={values.termino}
                             disabled
                           />
@@ -100,9 +96,8 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Características do Projeto:</label>
                           <Input
-                            placeholder="SOCIAL"
+                            placeholder="Carregando..."
                             type="text"
-                            onChange={handleChange('caracteristicas')}
                             defaultValue={values.caracteristicas}
                             disabled
                           />
@@ -114,9 +109,8 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Objetivo Geral do Projeto:</label>
                           <Input
-                            placeholder="OBJETIVO A"
+                            placeholder="Carregando..."
                             type="text"
-                            onChange={handleChange('objetivos_gerais')}
                             defaultValue={values.objetivos_gerais}
                             disabled
                           />
@@ -128,9 +122,8 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Objetivo(s) Específico(s) do Projeto:</label>
                           <Input
-                            placeholder="OBJETIVO ESPECÍFICO ABC"
+                            placeholder="Carregando..."
                             type="text"
-                            onChange={handleChange('objetivos_especificos')}
                             defaultValue={values.objetivos_especificos}
                             disabled
                           />
@@ -142,30 +135,51 @@ export class Child1 extends Component {
                         <FormGroup>
                           <label>Público Alvo:</label>
                           <Input
-                            placeholder="CRIANÇAS CARENTES"
+                            placeholder="Carregando..."
                             type="text"
-                            onChange={handleChange('publico_alvo')}
                             defaultValue={values.publico_alvo}
                             disabled
                           />
                         </FormGroup>
                       </Col>
                     </Row>
-
                     <Row>
                       <Col>
                         <FormGroup>
                           <label>Descrição evangelística/social do Projeto:</label>
                           <Input
-                            placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
+                            placeholder={values.descricao_evangelistica}
                             type="textarea"
-                            onChange={handleChange('descricao_evangelistica')}
-                            defaultValue={values.descricao_evangelistica}
                             disabled
                           />
                         </FormGroup>
                       </Col>
                     </Row>
+                    <Row>
+                    <Col>
+                      <FormGroup>
+                        <label>Voluntarios:</label>
+                        <Input
+                          placeholder={values.voluntarios}
+                          type="textarea"
+                          disabled
+                        />
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <FormGroup>
+                        <label>Resultados Esperados:</label>
+                        <Input
+                          placeholder="Carregando..."
+                          disabled
+                          type="text"
+                          defaultValue={values.resultados_esperados}
+                        />
+                      </FormGroup>
+                    </Col>
+                  </Row>
                     <Row>
                       <div className="update ml-auto mr-auto">
                         <Button

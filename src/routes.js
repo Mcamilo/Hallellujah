@@ -8,6 +8,7 @@ import PerfilUser from "views/user/Perfil.jsx"
 
 import AvaliarSAdmin from "views/super/Avaliar.jsx"
 import AvaliarSForm from "views/super/AvaliarForm.jsx"
+import Perfis from "views/super/Perfis.jsx"
 import ResultadosSAdmin from "views/super/Resultados.jsx"
 
 var routes = [
@@ -67,14 +68,6 @@ var routes_user = [
 
 var routes_SA = [
   {
-    path: "/projetos",
-    name: "Avaliar Projetos",
-    icon: "nc-icon nc-paper",
-    component: AvaliarSAdmin,
-    layout: "/admin",
-    visible: true
-  },
-  {
     path: "/avaliados",
     name: "Projetos Avaliados",
     icon: "nc-icon nc-single-copy-04",
@@ -89,7 +82,15 @@ var routes_SA = [
     component: AvaliarSForm,
     layout: "/admin",
     visible:false
-  }
+  },
+  {
+    path: "/perfis",
+    name: "Contas",
+    icon: "nc-icon nc-paper",
+    component: Perfis,
+    layout: "/admin",
+    visible: true
+  },
 ]
 export default routes;
 export const routesUser = routes_user;

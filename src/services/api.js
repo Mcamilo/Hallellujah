@@ -2,7 +2,9 @@ import axios from 'axios'
 import { getToken } from "./auth";
 
 const api = axios.create({
-    baseURL: 'https://hallelujah-backend.herokuapp.com'
+    // baseURL: 'https://hallelujah-backend.herokuapp.com'
+    baseURL: 'http://localhost:8080'
+    
 })
 
 api.interceptors.request.use(async config => {

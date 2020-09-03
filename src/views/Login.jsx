@@ -17,7 +17,6 @@ class Login extends React.Component {
           console.log("Login")
           e.preventDefault();
           const { username, password } = this.state;
-          console.log(this.state)
 
           if (!username || !password) {
           this.setState({ error: "Preencha e-mail e senha para continuar!" });
@@ -27,9 +26,11 @@ class Login extends React.Component {
               // To Do arrumar o login ...
               const response = await api.post("/", { "email":username,"senha": password });
               login(response.data.token, response.data.email);
-              if (response.data.papel === 'sadmin') {
-                this.props.history.push("/sadmin/projetos");
-              } else if(response.data.papel === 'admin'){
+              const resPapel = await api.get("/autorizacao");
+              console.log(resPapel.data.papel)
+              if (resPapel.data.papel === 'admin') {
+                this.props.history.push("/admin/avaliados");
+              } else if(resPapel.data.papel === 'conselheiro'){
                 this.props.history.push("/conselho/projetos");
               } else {
                 this.props.history.push("/user/cadastrar-projeto");
