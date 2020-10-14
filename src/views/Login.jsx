@@ -4,6 +4,7 @@ import { login } from "../services/auth";
 import '../assets/css/Login.css'
 import Child1 from '../components/LoginRegisterForm/Child1';
 import Child2 from '../components/LoginRegisterForm/Child2';
+import Child3 from '../components/LoginRegisterForm/Child3';
 
 class Login extends React.Component {
     state = {
@@ -13,7 +14,7 @@ class Login extends React.Component {
         step: 1
       };
       
-      handleSignIn = async e => {
+    handleSignIn = async e => {
           console.log("Login")
           e.preventDefault();
           const { username, password } = this.state;
@@ -44,32 +45,28 @@ class Login extends React.Component {
           }
           }
       }
-        // Proceed to next step
-    nextStep = () => {
-      const { step } = this.state;
-      this.setState({
-        step: step + 1
-      });
-    };
+    
+    handleResetPassword = async e => {
+      e.preventDefault()
+      console.log("Resetando")
+    }
 
-    // Go back to prev step
-    prevStep = () => {
-      const { step } = this.state;
+    updateStep = (number) => {
       this.setState({
-        step: step - 1
+        step: number
       });
-    };
+    }
     // Handle fields change
-  handleChange = input => e => {
-    this.setState({ [input]: e.target.value });
-  };
+    handleChange = input => e => {
+      this.setState({ [input]: e.target.value });
+    };
     render(){
       const { step } = this.state;
       switch (step) {
         case 1:
           return (
             <Child1
-              nextStep={this.nextStep}
+              updateStep={this.updateStep}
               handleChange={this.handleChange}
               handleSignIn={this.handleSignIn}
             />
@@ -77,8 +74,15 @@ class Login extends React.Component {
         case 2:
           return (
             <Child2
-              nextStep={this.nextStep}
-              prevStep={this.prevStep}
+              updateStep={this.updateStep}
+              handleChange={this.handleChange}
+            />
+          );
+        case 3:
+          return (
+            <Child3
+              updateStep={this.updateStep}
+              handleResetPassword={this.handleResetPassword}
               handleChange={this.handleChange}
             />
           );

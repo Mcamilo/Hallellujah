@@ -14,24 +14,24 @@ import {
   CardFooter
 } from "reactstrap";
 
-export class Child1 extends Component {
+export class Child3 extends Component {
   state = {
-    username: "",
-    password: "",
+    email: "",
     error: ""
   };
 
+  logar = e => {
+    e.preventDefault();
+    this.props.updateStep(1);
+  };
+  
   cadastrar = e => {
     e.preventDefault();
     this.props.updateStep(2);
   };
 
-  reset = e => {
-    e.preventDefault();
-    this.props.updateStep(3);
-  }
   render() {
-    const { handleChange, handleSignIn } = this.props;
+    const { handleChange, handleResetPassword } = this.props;
     return (
       <>
         <Container>
@@ -51,10 +51,10 @@ export class Child1 extends Component {
                 <Col md="8" style={{margin:"0 auto"}}>
                   <Card className="card-user loginCard">
                     <CardHeader>
-                      <CardTitle tag="h5">Login</CardTitle>
+                      <CardTitle tag="h5"> Enviar email de Recuperação </CardTitle>
                     </CardHeader>
                     <CardBody>
-                      <Form onSubmit={handleSignIn}>
+                      <Form onSubmit={handleResetPassword}>
                         {this.state.error && <p>{this.state.error}</p>}
                         <Row>
                           <Col>
@@ -63,41 +63,27 @@ export class Child1 extends Component {
                               <Input
                                 placeholder="Email de cadastro"
                                 type="text"
-                                onChange={handleChange('username')}
+                                onChange={handleChange('email')}
                               />
                             </FormGroup>
                           </Col>
                           </Row>
                           <Row>
-                          <Col>
-                            <FormGroup>
-                              <label htmlFor="exampleInputEmail1">
-                                Senha
-                              </label>
-                              <Input
-                                placeholder="Senha"
-                                type="password"
-                                onChange={handleChange('password')}
-                                />
-                            </FormGroup>
-                          </Col>
-                        </Row>
-                        <Row>
                           <div className="update ml-auto mr-auto">
                             <Button
                               className="btn-round"
                               color="warning"
                               type="submit"
                             >
-                              Entrar
+                              Enviar
                             </Button>
                           </div>
                         </Row>
                       </Form>
                     </CardBody>
                     <CardFooter>
-                      <span>Não possui conta? <b onClick={this.cadastrar} style={{cursor: "pointer"}}>Cadastre-se</b></span>
-                      <span style={{color:"black", float:"right", cursor:"pointer"}}><b onClick={this.reset}>Recuperar Senha</b></span>
+                        <span>Já possui conta? <b onClick={this.logar} style={{cursor: "pointer"}}>Logar</b></span>
+                        <span style={{float:"right"}}>Não possui conta? <b onClick={this.cadastrar} style={{cursor: "pointer"}}>Cadastre-se</b></span>
                     </CardFooter>
                   </Card>
                 </Col>
@@ -108,4 +94,4 @@ export class Child1 extends Component {
   }
 }
 
-export default Child1;
+export default Child3;

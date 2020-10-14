@@ -26,11 +26,12 @@ export class Child2 extends Component {
     cep:"",
     descricao:""
   };
-  back = e => {
+
+  logar = e => {
     e.preventDefault();
-    this.props.prevStep();
+    this.props.updateStep(1);
   };
-  
+
   handleSignUp = async e => {
     e.preventDefault();
     const { nome, email, senha, endereco, cidade, pais, cep, descricao, confirmar_senha } = this.state;
@@ -64,7 +65,7 @@ export class Child2 extends Component {
     }
 }
   render() {
-    const { values, handleChange } = this.props;
+    const { handleChange } = this.props;
     
     return (
       <>
@@ -209,7 +210,7 @@ export class Child2 extends Component {
                   </Form>
               </CardBody>
               <CardFooter>
-                <span>Já possui conta? <b onClick={this.back} style={{cursor: "pointer"}}>Logar</b></span>
+                <span>Já possui conta? <b onClick={this.logar} style={{cursor: "pointer"}}>Logar</b></span>
               </CardFooter>
             </Card>
           </Col>

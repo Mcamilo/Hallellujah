@@ -1,127 +1,127 @@
-import React, { Component } from 'react';
-import Child1 from './Child1';
-import Child2 from './Child2';
+// import React, { Component } from 'react';
+// import Child1 from './Child1';
+// import Child2 from './Child2';
 
-export class ParentForm extends Component {
-  state = {
-    step: 1,
-    nome: '',
-    sobrenome: '',
-    username: "",
-    password: "",
-  };
+// export class ParentForm extends Component {
+//   state = {
+//     step: 1,
+//     nome: '',
+//     sobrenome: '',
+//     username: "",
+//     password: "",
+//   };
 
-  // Proceed to next step
-  nextStep = () => {
-    const { step } = this.state;
-    this.setState({
-      step: step + 1
-    });
-  };
+//   // Proceed to next step
+//   nextStep = () => {
+//     const { step } = this.state;
+//     this.setState({
+//       step: step + 1
+//     });
+//   };
 
-  // Go back to prev step
-  prevStep = () => {
-    const { step } = this.state;
-    this.setState({
-      step: step - 1
-    });
-  };
-  handleSignIn = async e => {
-    console.log("LOGIN")
-    e.preventDefault();
-    const { username, password } = this.state;
-    if (!username || !password) {
-    this.setState({ error: "Preencha e-mail e senha para continuar!" });
-    } else {
-      if(username === "admin" && password === "admin"){
-        this.props.history.push("/admin/projetos");
-      }else if(username === "user" && password === "user"){
-        this.props.history.push("/user/cadastrar-projeto");
-      }
-    }
-}
+//   // Go back to prev step
+//   prevStep = () => {
+//     const { step } = this.state;
+//     this.setState({
+//       step: step - 1
+//     });
+//   };
+//   handleSignIn = async e => {
+//     console.log("LOGIN")
+//     e.preventDefault();
+//     const { username, password } = this.state;
+//     if (!username || !password) {
+//     this.setState({ error: "Preencha e-mail e senha para continuar!" });
+//     } else {
+//       if(username === "admin" && password === "admin"){
+//         this.props.history.push("/admin/projetos");
+//       }else if(username === "user" && password === "user"){
+//         this.props.history.push("/user/cadastrar-projeto");
+//       }
+//     }
+// }
 
-handleSignUp = async e => {
-  e.preventDefault();
-  const { nome, email, senha, endereco, cidade, pais, cep, descricao, confirmar_senha } = this.state;
+// handleSignUp = async e => {
+//   e.preventDefault();
+//   const { nome, email, senha, endereco, cidade, pais, cep, descricao, confirmar_senha } = this.state;
   
-  if (!nome || !email ||! senha || !endereco || !cidade || !pais || !cep || !descricao || !confirmar_senha) {
-    alert("Preencha todos os campos necessários")
-  }
-  else if(senha !== confirmar_senha){
-    alert("Senha não confirmada")
-  }else {
-  try {
-      const response = await api.post("/registrar", { 
-          nome, 
-          email,
-          senha,
-          endereco,
-          cidade, 
-          pais, 
-          cep, 
-          descricao
-        });              
-      alert("Conta criada com sucesso!")
+//   if (!nome || !email ||! senha || !endereco || !cidade || !pais || !cep || !descricao || !confirmar_senha) {
+//     alert("Preencha todos os campos necessários")
+//   }
+//   else if(senha !== confirmar_senha){
+//     alert("Senha não confirmada")
+//   }else {
+//   try {
+//       const response = await api.post("/registrar", { 
+//           nome, 
+//           email,
+//           senha,
+//           endereco,
+//           cidade, 
+//           pais, 
+//           cep, 
+//           descricao
+//         });              
+//       alert("Conta criada com sucesso!")
 
-  } catch (err) {
-      this.setState({
-      error:
-          "Houve um problema com o envio, verifique os campos."
-      });
-  }
-  }
-}
-  // Handle fields change
-  handleChange = input => e => {
-    this.setState({ [input]: e.target.value });
-  };
+//   } catch (err) {
+//       this.setState({
+//       error:
+//           "Houve um problema com o envio, verifique os campos."
+//       });
+//   }
+//   }
+// }
+//   // Handle fields change
+//   handleChange = input => e => {
+//     this.setState({ [input]: e.target.value });
+//   };
 
-  render() {
-    const { step } = this.state;
-    const {
-      titulo,
-      responsavel,
-      inicio,
-      termino,
-      caracteristicas,
-      objetivos_gerais,
-      objetivos_especificos,
-      publico_alvo,
-      descricao_evangelistica
-     } = this.state;
-    const values = { titulo,
-    responsavel,
-    inicio,
-    termino,
-    caracteristicas,
-    objetivos_gerais,
-    objetivos_especificos,
-    publico_alvo,
-    descricao_evangelistica};
+//   render() {
+//     const { step } = this.state;
+//     const {
+//       titulo,
+//       responsavel,
+//       inicio,
+//       termino,
+//       caracteristicas,
+//       objetivos_gerais,
+//       objetivos_especificos,
+//       publico_alvo,
+//       descricao_evangelistica
+//      } = this.state;
+//     const values = { titulo,
+//     responsavel,
+//     inicio,
+//     termino,
+//     caracteristicas,
+//     objetivos_gerais,
+//     objetivos_especificos,
+//     publico_alvo,
+//     descricao_evangelistica};
 
-    switch (step) {
-      case 1:
-        return (
-          <Child1
-            nextStep={this.nextStep}
-            handleChange={this.handleChange}
-            values={values}
-          />
-        );
-      case 2:
-        return (
-          <Child2
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            handleChange={this.handleChange}
-            values={values}
-          />
-        );
-      default:
-        (console.log('This is a multi-step form built with React.'))
-    }
-  }
-}
+//     switch (step) {
+//       case 1:
+//         return (
+//           <Child1
+//             nextStep={this.nextStep}
+//             handleChange={this.handleChange}
+//             values={values}
+//           />
+//         );
+//       case 2:
+//         return (
+//           <Child2
+//             nextStep={this.nextStep}
+//             prevStep={this.prevStep}
+//             handleChange={this.handleChange}
+//             values={values}
+//           />
+//         );
+//       default:
+//         (console.log('This is a multi-step form built with React.'))
+//     }
+//   }
+// }
 
-export default ParentForm;
+// export default ParentForm;
