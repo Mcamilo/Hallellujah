@@ -16,13 +16,19 @@ export class Confirm extends Component {
     super(props);
     this.state = {
       modal: false,
-      modalTitle:""
+      modalTitle:"",
+      disabled:false
     };
     this.toggle = this.toggle.bind(this);
     this.postData = this.postData.bind(this);
   }
+
   continue = e => {
     e.preventDefault();
+    if (this.state.disabled) {
+      return;
+    }
+    this.setState({disabled: true});
     this.postData()
   };
 
@@ -30,11 +36,13 @@ export class Confirm extends Component {
     e.preventDefault();
     this.props.prevStep();
   };
+
   toggle() {
     this.setState({
       modal: !this.state.modal
     });
   }
+  
   modalContent(){
     console.log("CLICOU")
     this.toggle()
@@ -65,15 +73,13 @@ export class Confirm extends Component {
     data.append('equipamentos', this.props.values.equipamentos)
     data.append('materiais', this.props.values.materiais)
     data.append('outros_custos', this.props.values.outros_custos)
-          
+    // Refresh quando der sucesso
     api.post('/projetos/', data).then(res=>{
-      console.log(JSON.stringify(res))
       if(res.data.message === "ok"){
         this.props.nextStep();
       }else{
         alert("Erro de Cadastro")
       }
-      
     })
   }
 render(){
@@ -188,7 +194,10 @@ render(){
                   color="warning"
                   variant="contained"
                   onClick={this.continue}
-                >Enviar Cadastro</Button>
+                  disabled={this.state.disabled}
+                >
+                  {this.state.disabled ? 'Enviando...' : 'Enviar Cadastro'}
+                  </Button>
                 </div>
                 </Row>
             </CardBody>
