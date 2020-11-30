@@ -5,6 +5,7 @@ import ResultadosAdmin from "views/admin/Resultados.jsx"
 import ResultadosUser from "views/user/Resultados.jsx"
 import ProjetoUser from "views/user/Projeto.jsx"
 import PerfilUser from "views/user/Perfil.jsx"
+import Cronograma from "views/user/Cronograma.jsx"
 
 import AvaliarSAdmin from "views/super/Avaliar.jsx"
 import AvaliarSForm from "views/super/AvaliarForm.jsx"
@@ -52,6 +53,14 @@ var routes_user = [
     name: "Resultados",
     icon: "nc-icon nc-chart-bar-32",
     component: ResultadosUser,
+    layout: "/user",
+    visible: true
+  },
+  {
+    path: "/cronograma",
+    name: "Cronograma",
+    icon: "nc-icon nc-single-02",
+    component: Cronograma,
     layout: "/user",
     visible: true
   },
