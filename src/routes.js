@@ -49,18 +49,10 @@ var routes_user = [
     visible: true
   },
   {
-    path: "/resultados",
-    name: "Resultados",
+    path: "/projetos",
+    name: "Projetos",
     icon: "nc-icon nc-chart-bar-32",
     component: ResultadosUser,
-    layout: "/user",
-    visible: true
-  },
-  {
-    path: "/cronograma",
-    name: "Cronograma",
-    icon: "nc-icon nc-single-02",
-    component: Cronograma,
     layout: "/user",
     visible: true
   },
