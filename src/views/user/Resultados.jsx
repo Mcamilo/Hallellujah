@@ -2,6 +2,7 @@ import React from "react";
 
 // react plugin used to create charts
 import { Chart } from "react-google-charts";
+import DatePicker from "reactstrap-date-picker"
 
 import '../../assets/css/User.css'
 import api from '../../services/api'
@@ -26,10 +27,15 @@ class Resultados extends React.Component {
       super(props);
       this.state = {
         projetos:[],
+        cronogramas:[],
         projeto:{},
         modal: false,
         cronograma: false,
-        modalTitle:""
+        tarefa:"",
+        inicio:"",
+        fim:"",
+        modalTitle:"",                
+        data : []        
       };
       this.toggle = this.toggle.bind(this);
       this.toggleCronograma = this.toggleCronograma.bind(this);
@@ -38,7 +44,9 @@ class Resultados extends React.Component {
   componentDidMount(){
       api.get('/projetosUser/').then(res=>{
         this.setState({projetos:res.data}) 
-      })
+      });
+      console.log(`Before: ${JSON.stringify(this.state.data)}`)
+      
     }
   toggle() {
     this.setState({
@@ -51,6 +59,27 @@ class Resultados extends React.Component {
     });
   }
   modalContent(projeto, cronograma){
+
+    api.get(`/cronograma/${projeto._id}`).then(res=>{
+      const ganttHeader = [
+        { type: 'string', label: 'Task ID' },
+        { type: 'string', label: 'Task Name' },
+        { type: 'string', label: 'Tema' },
+        { type: 'date', label: 'Start Date' },
+        { type: 'date', label: 'End Date' },
+        { type: 'number', label: 'Duração' },
+        { type: 'number', label: 'Percent Complete' },
+        { type: 'string', label: 'Dependencies' },
+      ]
+
+
+      const cronogramas = res.data.cronogramas.map(cronograma=>{
+        return ["TESTE",cronograma.taskName, "Teste" ,new Date(cronograma.dataInicio), new Date(cronograma.dataFinal), null,100,null]        
+      })
+
+      this.setState({data:[ganttHeader,...cronogramas]})      
+    })
+
     this.setState({
       modalTitle: projeto.titulo,
       projeto
@@ -58,7 +87,29 @@ class Resultados extends React.Component {
 
     cronograma?this.toggleCronograma():this.toggle()
   }
-  render() {
+
+  postData = e => {
+    e.preventDefault();
+    const data = new FormData() 
+    // Refresh quando der sucesso
+    api.post('/cronograma/', {"id_projeto":this.state.projeto._id,"taskName":this.state.tarefa, 'dataInicio': this.state.inicio, 'dataFinal': this.state.fim}).then(res=>{
+      if(res.data.message === "ok"){
+        console.log(this.state.tarefa)
+        alert("Sucesso")
+        window.location.reload();
+      }else{
+        alert("Erro")
+      }
+    })
+  }
+
+  handleChange(value, formattedValue) {
+    this.setState({
+      value: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
+      formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
+    })
+  }
+  render() {    
     return (
       <>
         <div className="content">
@@ -125,133 +176,21 @@ class Resultados extends React.Component {
          <div className="content">
           <h3>Cronograma</h3>
           <Chart
-  width={'100%'}
-  height={'400px'}
-  chartType="Gantt"
-  loader={<div>Carregando...</div>}
-  chartLanguage={'pt-BR'}
-  data={[
-    [
-      { type: 'string', label: 'Task ID' },
-      { type: 'string', label: 'Task Name' },
-      { type: 'string', label: 'Tema' },
-      { type: 'date', label: 'Start Date' },
-      { type: 'date', label: 'End Date' },
-      { type: 'number', label: 'Duração' },
-      { type: 'number', label: 'Percent Complete' },
-      { type: 'string', label: 'Dependencies' },
-    ],
-    [
-      '2020primavera',
-      'primavera 2020',
-      'primavera',
-      new Date(2020, 2, 22),
-      new Date(2020, 5, 20),
-      null,
-      100,
-      null,
-    ],
-    [
-      '2020Verão',
-      'Verão 2020',
-      'Verão',
-      new Date(2020, 5, 21),
-      new Date(2020, 8, 20),
-      null,
-      100,
-      null,
-    ],
-    [
-      '2020Outono',
-      'Outono 2020',
-      'Outono',
-      new Date(2020, 8, 21),
-      new Date(2020, 11, 20),
-      null,
-      100,
-      null,
-    ],
-    [
-      '2020Inverno',
-      'Inverno 2020',
-      'Inverno',
-      new Date(2020, 11, 21),
-      new Date(2021, 2, 21),
-      null,
-      100,
-      null,
-    ],
-    [
-      '2021primavera',
-      'primavera 2021',
-      'primavera',
-      new Date(2021, 2, 22),
-      new Date(2021, 5, 20),
-      null,
-      50,
-      null,
-    ],
-    [
-      '2021Verão',
-      'Verão 2021',
-      'Verão',
-      new Date(2021, 5, 21),
-      new Date(2021, 8, 20),
-      null,
-      0,
-      null,
-    ],
-    [
-      '2021Outono',
-      'Outono 2021',
-      'Outono',
-      new Date(2021, 8, 21),
-      new Date(2021, 11, 20),
-      null,
-      0,
-      null,
-    ],
-    [
-      '2021Inverno',
-      'Inverno 2021',
-      'Inverno',
-      new Date(2021, 11, 21),
-      new Date(2022, 2, 21),
-      null,
-      0,
-      null,
-    ],
-    [
-      'Futebol',
-      'Brasileirão',
-      'Esportes',
-      new Date(2020, 8, 4),
-      new Date(2021, 1, 1),
-      null,
-      100,
-      null,
-    ],
-    [
-      'Volei',
-      'Super Liga ',
-      'Esportes',
-      new Date(2021, 2, 31),
-      new Date(2021, 9, 20),
-      null,
-      14,
-      null,
-    ],
-    
-  ]}
-  options={{
-    height: 400,
-    gantt: {
-      trackHeight: 30,
-    },
-    
-  }}
-  rootProps={{ 'data-testid': '2' }}
-/>
+            width={'100%'}
+            height={'400px'}
+            chartType="Gantt"
+            loader={<div>Carregando...</div>}
+            chartLanguage={'pt-BR'}
+            data={this.state.data}
+            options={{
+              height: 400,
+              gantt: {
+                trackHeight: 30,
+              },
+              
+            }}
+            rootProps={{ 'data-testid': '2' }}
+        />
         </div>
         <div>
           <hr/>
@@ -265,8 +204,8 @@ class Resultados extends React.Component {
                             // defaultValue="Creative Code Inc."
                             // placeholder="Company"
                             type="text"
-                            defaultValue={this.state.nome || ''}
-                            onChange={e => this.setState({ nome: e.target.value })}
+                            defaultValue={this.state.tarefa || ''}
+                            onChange={e => this.setState({ tarefa: e.target.value })}
                           />
                         </FormGroup>
                       </Col>
@@ -276,21 +215,21 @@ class Resultados extends React.Component {
                       <Col className="pr-1" md="6">
                         <FormGroup>
                           <label>Início</label>
-                          <Input
-                            type="text"
-                            // defaultValue={this.state.cidade || ''}
-                            // onChange={e => this.setState({ cidade: e.target.value })}
-                          />
+                          <DatePicker 
+                              dateFormat="DD/MM/YYYY"
+                              value={this.state.inicio || ''}
+                              onChange={e => this.setState({ inicio: e.split('T')[0] })}
+                            />
                         </FormGroup>
                       </Col>
                       <Col className="px-1" md="6">
                         <FormGroup>
                           <label>Fim</label>
-                          <Input
-                            type="text"
-                            // defaultValue={this.state.pais || ''}
-                            // onChange={e => this.setState({ pais: e.target.value })}
-                          />
+                          <DatePicker 
+                              dateFormat="DD/MM/YYYY"
+                              value={this.state.fim || ''}
+                              onChange={e => this.setState({ fim: e.split('T')[0] })}
+                            />
                         </FormGroup>
                       </Col>                      
                     </Row>
@@ -301,7 +240,7 @@ class Resultados extends React.Component {
                           className="btn-round"
                           color="warning"
                           type="submit"
-                          // onClick={this.handleUpdate}
+                          onClick={this.postData}
                         >
                           Adicionar Tarefa
                         </Button>
