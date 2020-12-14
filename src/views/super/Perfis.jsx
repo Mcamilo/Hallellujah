@@ -175,6 +175,7 @@ class Perfis extends React.Component {
                   <thead>
                       <tr>
                       {/* <th>#</th> */}
+                      <th>Status</th>
                       <th>Acesso</th>
                       <th>Email</th>
                       <th>Nome</th>
@@ -182,15 +183,19 @@ class Perfis extends React.Component {
                       <th>Cidade</th>
                       <th>Pais</th>
                       <th>Cep</th>
-                      <th>Descrição</th>
+                      {/* <th>Descrição</th> */}
                       <th>Criação</th>
-                      <th>Status</th>
                       </tr>
                   </thead>
                   <tbody>
                     {
                       this.state.perfis.map((perfil,index)=> 
                           <tr key={perfil._id}>
+                            <td><Input type="select" name="select" id={perfil._id} value={perfil.status?"Ativado":"Desativado"} onChange={this.handleChange} style={{width:"auto"}}>
+                                    <option></option>
+                                    <option>Ativado</option>
+                                    <option>Desativado</option>
+                                  </Input></td>
                               <td>{perfil.papel||"-----"}</td>
                               <td>{perfil.email||"-----"}</td>
                               <td>{perfil.nome||"-----"}</td>
@@ -198,13 +203,9 @@ class Perfis extends React.Component {
                               <td>{perfil.cidade||"-----"}</td>
                               <td>{perfil.pais||"-----"}</td>
                               <td>{perfil.cep||"-----"}</td>
-                              <td>{perfil.descricao||"-----"}</td>
+                              {/* <td>{perfil.descricao||"-----"}</td> */}
                               <td>{perfil.createdAt||"-----"}</td>
-                              <td><Input type="select" name="select" id={perfil._id} value={perfil.status?"Ativado":"Desativado"} onChange={this.handleChange}>
-                                    <option></option>
-                                    <option>Ativado</option>
-                                    <option>Desativado</option>
-                                  </Input></td>
+                              
                           </tr>
                           )
                       }

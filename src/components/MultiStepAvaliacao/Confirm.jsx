@@ -11,6 +11,7 @@ Row,
 Col,
 Label } from 'reactstrap';
 import api from '../../services/api'
+import { Chart } from "react-google-charts";
 
 export class Confirm extends Component {
 
@@ -19,7 +20,8 @@ export class Confirm extends Component {
     this.state = {
       voted:"",
       deliberacao:"",
-      voto:""
+      voto:"",
+      data:[]
     };
     
   }
@@ -30,6 +32,25 @@ export class Confirm extends Component {
       }else{
         this.setState({voted:false})
       }
+    })
+    api.get(`/cronograma/${this.props.values.id}`).then(res=>{
+      const ganttHeader = [
+        { type: 'string', label: 'Task ID' },
+        { type: 'string', label: 'Task Name' },
+        { type: 'string', label: 'Tema' },
+        { type: 'date', label: 'Start Date' },
+        { type: 'date', label: 'End Date' },
+        { type: 'number', label: 'Duração' },
+        { type: 'number', label: 'Percent Complete' },
+        { type: 'string', label: 'Dependencies' },
+      ]
+
+
+      const cronogramas = res.data.cronogramas.map(cronograma=>{
+        return [cronograma.taskName, cronograma.taskName, cronograma.taskName, new Date(cronograma.dataInicio), new Date(cronograma.dataFinal), null, 0, null]        
+      })
+
+      this.setState({data:[ganttHeader,...cronogramas]})      
     })
   }
   
@@ -71,6 +92,7 @@ render(){
         status,
         votos }
       } = this.props;
+      console.log("DATA"+JSON.stringify(this.state.data))
   return (
     <>
     <Row style={{paddingTop:"2em"}}>
@@ -103,6 +125,32 @@ render(){
                     <ListGroupItem><b>Descrição Evangelística: </b>{descricao_evangelistica}</ListGroupItem>
                   </ListGroup>
                 </Col>
+                </Row>
+                <Row>
+                {
+                  this.state.data.length>1?
+                  <Col md="12" style={{margin:"0 auto"}}>
+                  
+
+                  <h3>Cronograma</h3>
+                  <Chart
+                    width={'100%'}
+                    height={'400px'}
+                    chartType="Gantt"
+                    loader={<div>Carregando...</div>}
+                    chartLanguage={'pt-BR'}
+                    data={this.state.data}
+                    options={{
+                      height: 400,
+                      gantt: {
+                        trackHeight: 30,
+                      },
+                      
+                    }}
+                    rootProps={{ 'data-testid': '2' }}
+                />
+                </Col>:<span></span>
+                }
                 </Row>
                 <br></br>
                 <h5>Avaliações</h5>

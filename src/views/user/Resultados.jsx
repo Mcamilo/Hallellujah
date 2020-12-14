@@ -35,7 +35,7 @@ class Resultados extends React.Component {
         inicio:"",
         fim:"",
         modalTitle:"",                
-        data : []        
+        data:[]        
       };
       this.toggle = this.toggle.bind(this);
       this.toggleCronograma = this.toggleCronograma.bind(this);
@@ -74,7 +74,7 @@ class Resultados extends React.Component {
 
 
       const cronogramas = res.data.cronogramas.map(cronograma=>{
-        return ["TESTE",cronograma.taskName, "Teste" ,new Date(cronograma.dataInicio), new Date(cronograma.dataFinal), null,100,null]        
+        return [cronograma.taskName, cronograma.taskName, cronograma.taskName, new Date(cronograma.dataInicio), new Date(cronograma.dataFinal), null, 0, null]        
       })
 
       this.setState({data:[ganttHeader,...cronogramas]})      
@@ -172,7 +172,8 @@ class Resultados extends React.Component {
 
        <Modal isOpen={this.state.cronograma} toggle={this.toggleCronograma} className="ModalProjetos">
          <ModalHeader toggle={this.toggleCronograma}>Cronograma</ModalHeader>
-         <ModalBody>         
+         <ModalBody>     
+         {this.state.data.length>1?    
          <div className="content">
           <h3>Cronograma</h3>
           <Chart
@@ -191,7 +192,8 @@ class Resultados extends React.Component {
             }}
             rootProps={{ 'data-testid': '2' }}
         />
-        </div>
+        </div>:<span></span>
+        }
         <div>
           <hr/>
                   <h3>Criar Tarefas</h3>

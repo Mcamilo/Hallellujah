@@ -71,6 +71,7 @@ class Resultados extends React.Component {
     return (
       <>
         <div className="content">
+          <h4>PAINEL ADMIN</h4>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className="ModalProjetos">
          <ModalHeader toggle={this.toggle}>{this.state.modalTitle}</ModalHeader>
          <ModalBody>
@@ -152,7 +153,7 @@ class Resultados extends React.Component {
                       <th>Responsável</th>
                       <th>Início</th>
                       <th>Término</th>
-                      <th>Orçamento</th>
+                      {/* <th>Orçamento</th> */}
                       <th>Status</th>
                       <th style={{textAlign: "center"}}>Detalhes</th>
                       </tr>
@@ -165,8 +166,8 @@ class Resultados extends React.Component {
                                 <td>{projeto.responsavel||"-----"}</td>
                                 <td>{projeto.d_inicio||"-----"}</td>
                                 <td>{projeto.d_final||"-----"}</td>
-                                <td>{projeto.resultados_esperados||"-----"}</td>
-                                <td><Input type="select" name="select" id={projeto._id} value={projeto.status} onChange={this.handleChange}>
+                                {/* <td>{projeto.resultados_esperados||"-----"}</td> */}
+                                <td><Input type="select" name="select" id={projeto._id} value={projeto.status} onChange={this.handleChange} style={{width:"auto"}}>
                                     <option>Desativado</option>
                                     <option>Deliberação</option>
                                     <option>Votação</option>
