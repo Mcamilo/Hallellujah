@@ -51,13 +51,13 @@ export class Child1 extends Component {
                 <Col md="8" style={{margin:"0 auto"}}>
                   <Card className="card-user loginCard">
                     <CardHeader>
-                      {/* <CardTitle tag="h5">Login</CardTitle> */}
+                      <CardTitle tag="h5">Login</CardTitle>
                     </CardHeader>
                     <CardBody>
-                    <div>
-                      <h3>Plataforma em Manutenção</h3>
-                    </div>
-                      {/* <Form onSubmit={handleSignIn}>
+                    {/* <div> */}
+                      {/* <h3>Plataforma em Manutenção</h3> */}
+                    {/* </div> */}
+                      <Form onSubmit={handleSignIn}>
                         {this.state.error && <p>{this.state.error}</p>}
                         <Row>
                           <Col>
@@ -96,12 +96,12 @@ export class Child1 extends Component {
                             </Button>
                           </div>
                         </Row>
-                      </Form> */}
+                      </Form>
                     </CardBody>
-                    {/* <CardFooter>
-                      <span>Não possui conta? <b onClick={this.cadastrar} style={{cursor: "pointer"}}>Cadastre-se</b></span>
+                    <CardFooter>
+                      {/* <span>Não possui conta? <b onClick={this.cadastrar} style={{cursor: "pointer"}}>Cadastre-se</b></span> */}
                       <span style={{color:"black", float:"right", cursor:"pointer"}}><b onClick={this.reset}>Recuperar Senha</b></span>
-                    </CardFooter> */}
+                    </CardFooter>
                   </Card>
                 </Col>
               </Row>

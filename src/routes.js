@@ -3,7 +3,11 @@ import AvaliarForm from "views/admin/AvaliarForm.jsx"
 import ResultadosAdmin from "views/admin/Resultados.jsx"
 
 import ResultadosUser from "views/user/Resultados.jsx"
+
+import ProjetoAdmin from "views/admin/Projeto.jsx"
+
 import ProjetoUser from "views/user/Projeto.jsx"
+
 import PerfilUser from "views/user/Perfil.jsx"
 import Cronograma from "views/user/Cronograma.jsx"
 
@@ -14,6 +18,14 @@ import ResultadosSAdmin from "views/super/Resultados.jsx"
 
 var routes = [
   {
+    path: "/cadastrar-projeto",
+    name: "Cadastrar Projeto",
+    icon: "nc-icon nc-single-copy-04",
+    component: ProjetoAdmin,
+    layout: "/conselho",
+    visible: true
+  },
+  {
     path: "/projetos",
     name: "Avaliar Projetos",
     icon: "nc-icon nc-paper",
@@ -23,7 +35,7 @@ var routes = [
   },
   {
     path: "/avaliados",
-    name: "Projetos Avaliados",
+    name: "Projetos Concluídos",
     icon: "nc-icon nc-single-copy-04",
     component: ResultadosAdmin,
     layout: "/conselho",
@@ -40,14 +52,14 @@ var routes = [
 ];
 
 var routes_user = [
-  {
-    path: "/cadastrar-projeto",
-    name: "Cadastrar Projeto",
-    icon: "nc-icon nc-single-copy-04",
-    component: ProjetoUser,
-    layout: "/user",
-    visible: true
-  },
+  // {
+  //   path: "/cadastrar-projeto",
+  //   name: "Cadastrar Projeto",
+  //   icon: "nc-icon nc-single-copy-04",
+  //   component: ProjetoUser,
+  //   layout: "/user",
+  //   visible: true
+  // },
   {
     path: "/projetos",
     name: "Projetos",

@@ -34,7 +34,7 @@ class Login extends React.Component {
               } else if(resPapel.data.papel === 'conselheiro'){
                 this.props.history.push("/conselho/projetos");
               } else {
-                this.props.history.push("/user/cadastrar-projeto");
+                this.props.history.push("/user/projetos");
               }
             } catch (err) {
               alert("Houve um problema com o login, verifique suas credenciais.")

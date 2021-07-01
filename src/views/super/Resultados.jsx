@@ -142,7 +142,7 @@ class Resultados extends React.Component {
               <Col md="12">
               <Card>
               <CardHeader>
-                  <CardTitle tag="h4">Seus Projetos Cadastrados</CardTitle>
+                  <CardTitle tag="h4">Projetos</CardTitle>
               </CardHeader>
               <CardBody>
               <Table responsive>
